@@ -170,7 +170,7 @@ button.btn{font-family:inherit}button.btn:disabled{opacity:.6;cursor:wait}
 .rgpd b{color:var(--muted);font-weight:600}
 
 /* ---- pie ---- */
-footer{background:#050d20;border-top:1px solid var(--line-2);padding-block:52px calc(96px + env(safe-area-inset-bottom,0px));padding-left:var(--gx);padding-right:var(--gxr)}
+footer{background:#050d20;border-top:1px solid var(--line-2);padding-block:52px calc(150px + env(safe-area-inset-bottom,0px));padding-left:var(--gx);padding-right:var(--gxr)}
 .foot{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:36px}
 footer .logo{gap:16px}footer .logo svg{width:62px;height:62px}
 footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-size:7.8px}
@@ -182,8 +182,11 @@ footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-s
 .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line-2);font-size:12px;color:#6d84a8;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
 .legal-links{display:flex;flex-wrap:wrap;gap:8px 18px}.legal-links a{color:#8fa6c8;text-decoration:none}.legal-links a:hover{color:var(--cyan)}
 
-/* ---- WhatsApp flotante ---- */
-.wa-float{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;align-items:center;gap:8px;background:var(--wa);color:var(--wa-ink);text-decoration:none;font-weight:700;font-size:14.5px;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.35)}
+/* ---- botones flotantes: email + WhatsApp ---- */
+.floats{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.mail-float{display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#04122e;text-decoration:none;font-weight:700;font-size:14.5px;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(31,123,255,.35)}
+.mail-float .ico{width:22px;height:22px;stroke-width:2}
+.wa-float{display:flex;align-items:center;gap:8px;background:var(--wa);color:var(--wa-ink);text-decoration:none;font-weight:700;font-size:14.5px;padding:12px 18px;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.35)}
 .wa-float svg{width:22px;height:22px}
 
 /* ---- menú de servicios ---- */
@@ -196,6 +199,9 @@ footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-s
 .wa-btn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--wa);color:var(--wa-ink);flex:none;transition:transform .15s}
 .wa-btn:hover{transform:scale(1.06)}
 .wa-btn svg{width:24px;height:24px}
+.mail-btn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#04122e;flex:none;transition:transform .15s}
+.mail-btn:hover{transform:scale(1.06)}
+.mail-btn .ico{width:22px;height:22px;stroke-width:2}
 .burger{display:none;width:44px;height:44px;border-radius:12px;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--line);color:var(--text);cursor:pointer}
 .burger[aria-expanded="true"]{border-color:var(--cyan);color:var(--cyan)}
 .burger svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
@@ -273,8 +279,11 @@ section[id]{scroll-margin-top:84px}
   .q{border-right:none;border-bottom:1px solid var(--line-2)}.q:last-child{border-bottom:none}
   .foot{grid-template-columns:minmax(0,1fr)}
   footer .logo svg{width:52px;height:52px}footer .wm b{font-size:32px}footer .wm .sv{font-size:8.4px}footer .wm em{font-size:6.3px}
-  .wa-float .t{display:none}.wa-float{padding:14px}
+  .wa-float .t,.mail-float .t{display:none}.wa-float,.mail-float{padding:14px}
+  .nav-actions{gap:7px}.wa-btn,.mail-btn,.burger{width:40px;height:40px}.wa-btn svg{width:22px;height:22px}.mail-btn .ico{width:20px;height:20px}
 }
+@media (max-width:389px){.nav .logo{gap:8px}.nav .logo svg{width:38px;height:38px}.nav .wm b{font-size:18.5px}.nav .wm .sv{font-size:6.4px}.nav-actions{gap:6px}.wa-btn,.mail-btn,.burger{width:38px;height:38px}}
+@media (max-width:349px){.nav .logo svg{width:34px;height:34px}.nav .wm b{font-size:16px}.nav .wm .sv{font-size:5.6px}.nav-actions{gap:5px}.wa-btn,.mail-btn,.burger{width:36px;height:36px}}
 </style>
 
 </head>
@@ -302,6 +311,7 @@ section[id]{scroll-margin-top:84px}
     </ul>
     <div class="nav-actions">
       <button type="button" class="burger" data-panel="menu" aria-expanded="false" aria-controls="menu" aria-label="Ver servicios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <a class="mail-btn" href="#contacto" data-mail aria-label="Escribir por email"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></a>
       <a class="wa-btn" href="https://wa.me/34639559683" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
     </div>
   </div>
@@ -384,6 +394,7 @@ section[id]{scroll-margin-top:84px}
       <p class="lead">Instalaciones eléctricas, boletines CIE, control de acceso, videovigilancia, videoporteros y puntos de recarga. Hablas directamente con el técnico que hace el trabajo.</p>
       <div class="cta">
         <a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto por WhatsApp</a>
+        <a class="btn btn-mail" href="#contacto" data-mail><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Pedir por email</a>
         <button type="button" class="btn btn-ghost" data-open-menu>Ver servicios</button>
       </div>
       <div class="facts">
@@ -512,7 +523,10 @@ section[id]{scroll-margin-top:84px}
   </div>
 </footer>
 
+<div class="floats">
+<a class="mail-float" href="#contacto" data-mail aria-label="Escribir por email"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg><span class="t">Email</span></a>
 <a class="wa-float" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="t">WhatsApp</span></a>
+</div>
 
 <script>
 (function(){
@@ -557,6 +571,7 @@ section[id]{scroll-margin-top:84px}
   document.addEventListener('keydown',function(e){if(e.key==='Escape') closeAll();});
   panels.forEach(function(p){p.addEventListener('click',function(e){var a=e.target.closest('a'); if(a && !a.hasAttribute('data-open-panel')) closeAll();});});
   // Al elegir un servicio, queda marcado en el formulario de presupuesto
+  document.querySelectorAll('[data-mail]').forEach(function(a){a.addEventListener('click',function(){closeAll(); setTimeout(function(){var n=document.getElementById('f-nombre'); if(n) n.focus({preventScroll:true});},700);});});
   document.querySelectorAll('[data-svc]').forEach(function(a){a.addEventListener('click',function(){var sel=document.getElementById('f-servicio'); sel.value=a.getAttribute('data-svc'); build();});});
 
   // Cabecera: logo grande arriba, compacto al bajar
