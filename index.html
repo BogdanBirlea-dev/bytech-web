@@ -151,7 +151,9 @@ form h3{font-size:20px;margin-bottom:18px}
 .field textarea{min-height:96px;resize:vertical}
 .field select option{background:var(--navy)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--cyan)}
-form .btn{width:100%;justify-content:center;margin-top:6px}
+form .btn{width:100%;justify-content:center}
+.send-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:6px}
+@media (max-width:600px){.send-row{grid-template-columns:minmax(0,1fr)}}
 .form-note{font-size:12.5px;color:var(--soft);margin-top:12px;text-align:center}
 
 /* ---- pie ---- */
@@ -442,7 +444,7 @@ section[id]{scroll-margin-top:84px}
       <p class="sub">Cuéntame qué necesitas y te respondo en menos de 24 horas con un presupuesto detallado y sin compromiso.</p>
       <div class="datos">
         <div class="dato"><div class="ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg></div><div class="grow"><small>Teléfono y WhatsApp</small><b id="tel">639 559 683</b></div><button class="copy" type="button" data-copy="639559683" data-target="tel">Copiar</button></div>
-        <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></div><div class="grow"><small>Email</small><b id="mail">info@bytechservicios.es</b></div><button class="copy" type="button" data-copy="info@bytechservicios.es" data-target="mail">Copiar</button></div>
+        <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></div><div class="grow"><small>Email</small><b id="mail"><a href="mailto:info@bytechservicios.es" style="color:inherit;text-decoration:none">info@bytechservicios.es</a></b></div><button class="copy" type="button" data-copy="info@bytechservicios.es" data-target="mail">Copiar</button></div>
         <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.6-7-12a7 7 0 0 1 14 0c0 5.4-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div><div class="grow"><small>Zona de trabajo</small><b>Madrid y alrededores</b></div></div>
         <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><path d="m8.6 12.2 2.4 2.4 4.5-4.8"/></svg></div><div class="grow"><small>Empresa instaladora autorizada</small><b>Reg. Industrial nº 207876</b></div></div>
       </div>
@@ -466,8 +468,11 @@ section[id]{scroll-margin-top:84px}
           <option>Otro</option>
         </select></div>
       <div class="field"><label for="f-msg">Qué necesitas</label><textarea id="f-msg" name="mensaje" placeholder="Cuéntame brevemente el trabajo"></textarea></div>
-      <a id="send" class="btn btn-wa" href="https://wa.me/34639559683" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</a>
-      <p class="form-note">Se abre WhatsApp con tu mensaje ya escrito. Solo tienes que pulsar enviar.</p>
+      <div class="send-row">
+        <a id="send" class="btn btn-wa" href="https://wa.me/34639559683" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</a>
+        <a id="send-mail" class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Enviar por email</a>
+      </div>
+      <p class="form-note">Se abre WhatsApp o tu correo con el mensaje ya escrito. Solo tienes que pulsar enviar.</p>
     </form>
   </div>
 </section>
@@ -501,6 +506,8 @@ section[id]{scroll-margin-top:84px}
     if(v('f-msg')) parts.push(v('f-msg'));
     if(v('f-nombre')) parts.push('Soy '+v('f-nombre')+'.');
     send.href='https://wa.me/34639559683?text='+encodeURIComponent(parts.join('\n'));
+    var sm=document.getElementById('send-mail');
+    if(sm) sm.href='mailto:info@bytechservicios.es?subject='+encodeURIComponent('Presupuesto'+(v('f-servicio')?' - '+v('f-servicio'):''))+'&body='+encodeURIComponent(parts.join('\n'));
   }
   f.addEventListener('input',build); f.addEventListener('change',build);
   f.addEventListener('submit',function(e){e.preventDefault();});
