@@ -52,12 +52,17 @@ p{margin:0}
 .wm{display:flex;flex-direction:column;align-items:center;line-height:1}
 .wm b{font-family:var(--f-brand);font-weight:400;letter-spacing:.05em;padding-left:.05em;white-space:nowrap}
 .wm b i{font-style:normal;color:var(--cyan)}
-.wm span{font-weight:400;letter-spacing:.62em;padding-left:.62em;color:#9cc9ff;margin-top:.55em;white-space:nowrap}
+.wm .sv{font-weight:400;letter-spacing:.62em;padding-left:.62em;color:#9cc9ff;margin-top:.55em;white-space:nowrap}
+.wm em{font-style:normal;font-weight:600;letter-spacing:.14em;padding-left:.14em;color:#d6e6fb;white-space:nowrap;border-top:1px solid rgba(60,200,255,.45);padding-top:.75em;margin-top:.85em}
+.wm em .dt{color:var(--cyan)}
 
 /* ---- cabecera ---- */
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(7,18,42,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-left:var(--gx);padding-right:var(--gxr)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:68px}
-.nav .wm b{font-size:19px}.nav .wm span{font-size:7px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;height:100px;transition:height .25s}
+.nav .logo{gap:16px}.nav .logo svg{width:62px;height:62px;transition:width .25s,height .25s}
+.nav .wm b{font-size:40px;transition:font-size .25s}.nav .wm .sv{font-size:10.5px;transition:font-size .25s}.nav .wm em{font-size:7.8px}
+header.compact .nav{height:68px}header.compact .nav .logo{gap:12px}header.compact .nav .logo svg{width:44px;height:44px}
+header.compact .nav .wm b{font-size:21px}header.compact .nav .wm .sv{font-size:7.2px}header.compact .nav .wm em{display:none}
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
 .nav ul a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500}
 .nav ul a:hover{color:var(--cyan)}
@@ -76,10 +81,6 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rg
 .fact{padding:18px 16px 0 0}
 .fact strong{display:block;font-size:17px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
 .fact span{font-size:12.5px;color:var(--soft)}
-.hero-mark{display:flex;flex-direction:column;align-items:center;gap:26px;padding:40px 24px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid var(--line)}
-.hero-mark svg{width:min(190px,48vw);height:auto;filter:drop-shadow(0 0 28px rgba(40,160,255,.5))}
-.hero-mark .wm b{font-size:clamp(28px,3.4vw,38px)}.hero-mark .wm span{font-size:clamp(10px,1.1vw,12px)}
-.hero-mark .tag{font-size:11px;font-weight:600;letter-spacing:.14em;color:#d6e6fb;padding-top:12px;border-top:1px solid var(--line);text-align:center}
 
 /* ---- precios rápidos ---- */
 .quick{background:var(--navy);border-block:1px solid var(--line-2);padding-left:var(--gx);padding-right:var(--gxr)}
@@ -154,9 +155,10 @@ form .btn{width:100%;justify-content:center;margin-top:6px}
 .form-note{font-size:12.5px;color:var(--soft);margin-top:12px;text-align:center}
 
 /* ---- pie ---- */
-footer{background:#050d20;border-top:1px solid var(--line-2);padding-block:52px 28px;padding-left:var(--gx);padding-right:var(--gxr)}
-.foot{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px}
-footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
+footer{background:#050d20;border-top:1px solid var(--line-2);padding-block:52px calc(96px + env(safe-area-inset-bottom,0px));padding-left:var(--gx);padding-right:var(--gxr)}
+.foot{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:36px}
+footer .logo{gap:16px}footer .logo svg{width:62px;height:62px}
+footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-size:7.8px}
 .foot p{font-size:13px;color:var(--soft);margin-top:16px;max-width:38ch}
 .foot h4{margin:0 0 14px;font-size:13px;font-weight:600;color:var(--text)}
 .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
@@ -195,12 +197,36 @@ footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
 @media (max-width:960px){.burger{display:inline-flex}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:600px){.menu-grid{grid-template-columns:minmax(0,1fr)}.mi{padding:11px 10px}}
 
+/* ---- carrusel de instalaciones ---- */
+.gallery{border-radius:22px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid var(--line);min-width:0}
+.g-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px 14px}
+.g-title{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+.g-nav{display:flex;gap:8px}
+.g-btn{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--line);color:var(--text);cursor:pointer}
+.g-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.g-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.g-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:14px;scrollbar-width:none;outline-offset:4px}
+.g-track::-webkit-scrollbar{display:none}
+.slide{position:relative;flex:0 0 100%;margin:0;aspect-ratio:4/3;scroll-snap-align:start;overflow:hidden;background:var(--navy)}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;background:linear-gradient(180deg,transparent,rgba(5,13,32,.92))}
+.slide figcaption b{display:block;font-size:17px;font-weight:600}
+.slide figcaption span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.ph{background:radial-gradient(ellipse 55% 50% at 50% 40%,rgba(31,123,255,.35),transparent 70%),linear-gradient(160deg,#10285a 0%,#0a1a3a 60%,#081430 100%)}
+.ph::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(60,160,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(60,160,255,.08) 1px,transparent 1px);background-size:28px 28px}
+.ph-art{position:absolute;inset:0 0 22%;display:flex;align-items:center;justify-content:center;color:var(--cyan)}
+.ph-art .ico{width:34%;height:auto;max-width:150px;stroke-width:1.1;filter:drop-shadow(0 0 18px rgba(60,200,255,.45))}
+.chip{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--cyan);background:rgba(7,18,42,.75);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+.g-dots{display:flex;justify-content:center;gap:8px;padding-top:14px}
+.g-dot{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.22);cursor:pointer;transition:width .2s,background .2s}
+.g-dot[aria-current="true"]{width:22px;background:var(--cyan)}
+section[id]{scroll-margin-top:84px}
+
 /* ---- responsive ---- */
 @media (max-width:960px){
   .nav ul{display:none}
   .hero-grid,.split{grid-template-columns:minmax(0,1fr)}
-  .hero-mark{order:-1;padding:28px 20px}
-  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .quick .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}
   .q:nth-child(2){border-right:none}
   .q:nth-child(-n+2){border-bottom:1px solid var(--line-2)}
@@ -209,10 +235,13 @@ footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
   .foot{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media (max-width:600px){
+  .nav{height:72px}.nav .logo{gap:10px}.nav .logo svg{width:44px;height:44px}.nav .wm b{font-size:22px}.nav .wm .sv{font-size:7.5px}.nav .wm em{display:none}
+  .menu{max-height:calc(100vh - 72px - env(safe-area-inset-top,0px))}
   .band{padding-block:64px}
   .quick .wrap,.svc-grid,.adv{grid-template-columns:minmax(0,1fr)}
   .q{border-right:none;border-bottom:1px solid var(--line-2)}.q:last-child{border-bottom:none}
   .foot{grid-template-columns:minmax(0,1fr)}
+  footer .logo svg{width:52px;height:52px}footer .wm b{font-size:32px}footer .wm .sv{font-size:8.4px}footer .wm em{font-size:6.3px}
   .wa-float .t{display:none}.wa-float{padding:14px}
 }
 </style>
@@ -231,8 +260,8 @@ footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
 <header>
   <div class="wrap nav">
     <a class="logo" href="#inicio" aria-label="BY-TECH Servicios, inicio">
-      <svg width="42" height="42" aria-hidden="true"><use href="#bt-mark"/></svg>
-      <span class="wm"><b>BY<i>-</i>TECH</b><span>SERVICIOS</span></span>
+      <svg width="58" height="58" aria-hidden="true"><use href="#bt-mark"/></svg>
+      <span class="wm"><b>BY<i>-</i>TECH</b><span class="sv">SERVICIOS</span><em>ELECTRICIDAD <span class="dt">·</span> CONTROL DE ACCESO <span class="dt">·</span> SEGURIDAD</em></span>
     </a>
     <ul>
       <li><button type="button" class="nav-svc" data-menu-toggle aria-expanded="false" aria-controls="menu">Servicios<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
@@ -289,12 +318,25 @@ footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
         <div class="fact"><strong>Madrid</strong><span>y alrededores</span></div>
       </div>
     </div>
-    <div class="hero-mark" aria-hidden="true">
-      <svg viewBox="0 0 64 64"><use href="#bt-mark"/></svg>
-      <div class="wm"><b>BY<i>-</i>TECH</b><span>SERVICIOS</span></div>
-      <div class="tag">ELECTRICIDAD · CONTROL DE ACCESO · SEGURIDAD</div>
+    <div class="gallery" role="region" aria-roledescription="carrusel" aria-label="Últimas instalaciones">
+      <div class="g-head">
+        <span class="g-title">Últimas instalaciones</span>
+        <div class="g-nav"><button type="button" class="g-btn" data-g="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button type="button" class="g-btn" data-g="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>
+      </div>
+      <div class="g-track" id="g-track" tabindex="0">
+        <!-- Para añadir un trabajo, copia esta línea arriba del todo de la lista y cambia la foto y los textos:
+        <figure class="slide"><img src="trabajos/nombre-de-la-foto.jpg" alt="Descripción del trabajo" loading="lazy"><figcaption><b>Título del trabajo</b><span>Localidad · mes año</span></figcaption></figure>
+        -->
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Instalaciones eléctricas</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="1.8"/><path d="M3.2 8.6h17.6"/><rect x="5.6" y="11" width="2.4" height="5.6" rx=".5"/><rect x="9.6" y="11" width="2.4" height="5.6" rx=".5"/><rect x="13.6" y="11" width="2.4" height="5.6" rx=".5"/><path d="M17.6 11v5.6"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Cuadros eléctricos</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Control de acceso</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Videovigilancia</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/><path d="M2.4 21.2h12.2"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Puntos de recarga</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="2.5" width="13" height="19" rx="1.6"/><rect x="7.8" y="5" width="8.4" height="7" rx=".6"/><circle cx="12" cy="7.6" r="1.3"/><path d="M9.8 11.3a2.4 2.4 0 0 1 4.4 0M8.2 16.6c.7-.8 1.8-.8 2.5 0"/><circle cx="15" cy="16.5" r="1"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Videoporteros</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+      </div>
+      <div class="g-dots" id="g-dots"></div>
     </div>
-  </div>
+    </div>
 </section>
 
 <div class="quick">
@@ -423,14 +465,13 @@ footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="logo" href="#inicio" aria-label="BY-TECH Servicios, inicio"><svg width="40" height="40" aria-hidden="true"><use href="#bt-mark"/></svg><span class="wm"><b>BY<i>-</i>TECH</b><span>SERVICIOS</span></span></a>
-        <p>Empresa instaladora eléctrica autorizada en baja tensión, categoría Especialista. Reg. Industrial nº 207876. Bogdan Birlea · NIF Y2290312D · Valdemoro (Madrid).</p>
+        <a class="logo" href="#inicio" aria-label="BY-TECH Servicios, inicio"><svg width="62" height="62" aria-hidden="true"><use href="#bt-mark"/></svg><span class="wm"><b>BY<i>-</i>TECH</b><span class="sv">SERVICIOS</span><em>ELECTRICIDAD <span class="dt">·</span> CONTROL DE ACCESO <span class="dt">·</span> SEGURIDAD</em></span></a>
+        <p>Empresa instaladora eléctrica autorizada en baja tensión, categoría Especialista. Reg. Industrial nº 207876.</p>
       </div>
-      <div><h4>Servicios</h4><ul><li><a href="#contacto" data-svc="Instalación eléctrica">Instalaciones eléctricas</a></li><li><a href="#boletines">Boletines CIE</a></li><li><a href="#recarga">Puntos de recarga</a></li><li><a href="#contacto" data-svc="Control de acceso">Control de acceso y presencia</a></li><li><a href="#contacto" data-svc="Videovigilancia">Videovigilancia y videoporteros</a></li></ul></div>
-      <div><h4>Zona</h4><ul><li>Madrid</li><li>Valdemoro</li><li>Pinto y Parla</li><li>Getafe</li><li>Aranjuez</li></ul></div>
-      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/34639559683" target="_blank" rel="noopener">WhatsApp 639 559 683</a></li><li>bogdan.birlea@protonmail.com</li><li><a href="#contacto">Pedir presupuesto</a></li></ul></div>
+      <div><h4>Zona</h4><ul><li>Madrid y alrededores</li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/34639559683" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></li><li>bogdan.birlea@protonmail.com</li><li><a href="#contacto">Pedir presupuesto</a></li></ul></div>
     </div>
-    <div class="legal">© 2026 BY-TECH Servicios · Bogdan Birlea · Empresa instaladora autorizada en la Comunidad de Madrid</div>
+    <div class="legal">© 2026 BY-TECH Servicios · Empresa instaladora autorizada en la Comunidad de Madrid</div>
   </div>
 </footer>
 
@@ -463,6 +504,28 @@ footer .wm b{font-size:20px}footer .wm span{font-size:7.5px}
   menu.addEventListener('click',function(e){if(e.target.closest('a')) setOpen(false);});
   // Al elegir un servicio, queda marcado en el formulario de presupuesto
   document.querySelectorAll('[data-svc]').forEach(function(a){a.addEventListener('click',function(){var sel=document.getElementById('f-servicio'); sel.value=a.getAttribute('data-svc'); build();});});
+
+  // Cabecera: logo grande arriba, compacto al bajar
+  var hdr=document.querySelector('header');
+  function onScroll(){hdr.classList.toggle('compact', window.scrollY>40);}
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  // Carrusel de instalaciones: pasa solo, se puede arrastrar y tiene botones
+  (function(){
+    var track=document.getElementById('g-track'); if(!track) return;
+    var slides=track.querySelectorAll('.slide'), dotsBox=document.getElementById('g-dots'), dots=[], i=0, timer=null, paused=false;
+    var still=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    slides.forEach(function(_,k){var d=document.createElement('button'); d.type='button'; d.className='g-dot'; d.setAttribute('aria-label','Ir a la foto '+(k+1)); d.addEventListener('click',function(){go(k);restart();}); dotsBox.appendChild(d); dots.push(d);});
+    function mark(){dots.forEach(function(d,k){d.setAttribute('aria-current',k===i?'true':'false');});}
+    function go(k){i=(k+slides.length)%slides.length; track.scrollTo({left:i*track.clientWidth,behavior:still?'auto':'smooth'}); mark();}
+    function tick(){if(!paused && document.visibilityState==='visible') go(i+1);}
+    function restart(){clearInterval(timer); if(!still) timer=setInterval(tick,4500);}
+    track.addEventListener('scroll',function(){var k=Math.round(track.scrollLeft/Math.max(1,track.clientWidth)); if(k!==i){i=k; mark();}},{passive:true});
+    document.querySelectorAll('.g-btn').forEach(function(b){b.addEventListener('click',function(){go(i+parseInt(b.getAttribute('data-g'),10)); restart();});});
+    ['mouseenter','focusin','touchstart'].forEach(function(ev){track.parentNode.addEventListener(ev,function(){paused=true;},{passive:true});});
+    ['mouseleave','focusout','touchend'].forEach(function(ev){track.parentNode.addEventListener(ev,function(){paused=false;},{passive:true});});
+    track.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(i+1);restart();} if(e.key==='ArrowLeft'){go(i-1);restart();}});
+    mark(); restart();
+  })();
   // Botones de copiar teléfono y email
   document.querySelectorAll('.copy').forEach(function(b){
     b.addEventListener('click',function(){
