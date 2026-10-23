@@ -86,6 +86,9 @@ header.compact .nav .wm b{font-size:21px}header.compact .nav .wm .sv{font-size:7
 .quick .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
 .q{display:flex;align-items:center;gap:14px;padding:24px 18px;border-right:1px solid var(--line-2)}
 .q:last-child{border-right:none}
+a.q{color:inherit;text-decoration:none;transition:background .15s}
+a.q:hover{background:rgba(60,200,255,.06)}
+a.q:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
 .q .ico{width:30px;height:30px;color:var(--cyan)}
 .q b{display:block;font-size:14.5px;font-weight:600}
 .q span{font-size:13px;color:var(--cyan);font-variant-numeric:tabular-nums}
@@ -220,6 +223,7 @@ footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-s
 .pb .checks li{font-size:15px}
 .pb .price{padding:28px 24px}
 .pb .price .num{font-size:clamp(46px,5vw,62px)}
+.price .num.num-t{font-size:clamp(28px,3vw,34px);line-height:1.15;letter-spacing:-.01em}
 .pb .ev{padding:28px 24px}.pb .ev .ico{width:76px;height:76px}.pb .ev h3{font-size:22px}
 @media (max-width:960px){.pb{grid-template-columns:minmax(0,1fr);gap:22px}}
 
@@ -327,13 +331,13 @@ section[id]{scroll-margin-top:84px}
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Viviendas: alta de suministro, cambio de titular y aumento de potencia</li>
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Locales: aperturas y licencias de actividad</li>
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Puntos de recarga: certificado ITC-BT-52</li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Tramitación ante Industria Madrid incluida en el precio</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Tramitación ante Industria Madrid incluida</li>
       </ul>
     </div>
     <div class="price">
       <small>Boletín eléctrico para vivienda</small>
-      <div class="num"><sup>desde</sup>150 €</div>
-      <p class="note">IVA no incluido · Tramitación incluida</p>
+      <div class="num num-t">Presupuesto<br>sin compromiso</div>
+      <p class="note">Respuesta en menos de 24 h · Tramitación incluida</p>
       <a class="btn btn-main" href="https://wa.me/34639559683?text=Hola%2C%20necesito%20un%20bolet%C3%ADn%20el%C3%A9ctrico" target="_blank" rel="noopener">Pedir mi boletín</a>
       <p class="incl">Revisión · Certificado · Tramitación</p>
     </div>
@@ -346,10 +350,10 @@ section[id]{scroll-margin-top:84px}
       <h3 class="pb-title">Instala tu cargador de coche eléctrico</h3>
       <p class="sub">Recarga en casa o en el garaje de tu comunidad, con la instalación legalizada y su certificado.</p>
       <ul class="checks">
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Cargador monofásico hasta 7,4 kW, desde 800 €</li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Cargador trifásico hasta 22 kW, desde 1.200 €</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Cargador monofásico hasta 7,4 kW</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Cargador trifásico hasta 22 kW</li>
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Instalaciones para comunidades de vecinos</li>
-        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Certificado ITC-BT-52 incluido en el precio</li>
+        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Certificado ITC-BT-52 incluido</li>
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Te informo de las ayudas que haya disponibles</li>
       </ul>
       <div style="margin-top:28px"><a class="btn btn-main" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20instalar%20un%20punto%20de%20recarga" target="_blank" rel="noopener">Pedir presupuesto de recarga</a></div>
@@ -411,10 +415,10 @@ section[id]{scroll-margin-top:84px}
 
 <div class="quick">
   <div class="wrap">
-    <div class="q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.8H6.5a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h11a1.8 1.8 0 0 0 1.8-1.8V8.1z"/><path d="M14 2.8v5.3h5.3"/><path d="m12.6 9.6-3 4.6h2.6l-.9 3.8 3.3-5h-2.6z"/></svg><div><b>Boletín eléctrico</b><span>desde 150 €</span></div></div>
-    <div class="q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg><div><b>Control de acceso</b><span>desde 350 €</span></div></div>
-    <div class="q"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/></svg><div><b>Punto de recarga</b><span>desde 800 €</span></div></div>
-    <div class="q"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg><div><b>Videovigilancia</b><span>desde 800 €</span></div></div>
+    <a class="q" href="#contacto" data-svc="Boletín eléctrico (CIE)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.8H6.5a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h11a1.8 1.8 0 0 0 1.8-1.8V8.1z"/><path d="M14 2.8v5.3h5.3"/><path d="m12.6 9.6-3 4.6h2.6l-.9 3.8 3.3-5h-2.6z"/></svg><div><b>Boletín eléctrico</b><span>Presupuesto sin compromiso</span></div></a>
+    <a class="q" href="#contacto" data-svc="Control de acceso"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg><div><b>Control de acceso</b><span>Presupuesto sin compromiso</span></div></a>
+    <a class="q" href="#contacto" data-svc="Punto de recarga"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/></svg><div><b>Punto de recarga</b><span>Presupuesto sin compromiso</span></div></a>
+    <a class="q" href="#contacto" data-svc="Videovigilancia"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg><div><b>Videovigilancia</b><span>Presupuesto sin compromiso</span></div></a>
   </div>
 </div>
 
