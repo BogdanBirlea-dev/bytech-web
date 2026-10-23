@@ -311,7 +311,7 @@ section[id]{scroll-margin-top:84px}
     </ul>
     <div class="nav-actions">
       <button type="button" class="burger" data-panel="menu" aria-expanded="false" aria-controls="menu" aria-label="Ver servicios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-      <a class="mail-btn" href="#contacto" data-mail aria-label="Escribir por email"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></a>
+      <a class="mail-btn" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios" aria-label="Escribir por email"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></a>
       <a class="wa-btn" href="https://wa.me/34639559683" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
     </div>
   </div>
@@ -394,7 +394,7 @@ section[id]{scroll-margin-top:84px}
       <p class="lead">Instalaciones eléctricas, boletines CIE, control de acceso, videovigilancia, videoporteros y puntos de recarga. Hablas directamente con el técnico que hace el trabajo.</p>
       <div class="cta">
         <a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto por WhatsApp</a>
-        <a class="btn btn-mail" href="#contacto" data-mail><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Pedir por email</a>
+        <a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Pedir por email</a>
         <button type="button" class="btn btn-ghost" data-open-menu>Ver servicios</button>
       </div>
       <div class="facts">
@@ -524,7 +524,7 @@ section[id]{scroll-margin-top:84px}
 </footer>
 
 <div class="floats">
-<a class="mail-float" href="#contacto" data-mail aria-label="Escribir por email"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg><span class="t">Email</span></a>
+<a class="mail-float" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios" aria-label="Escribir por email"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg><span class="t">Email</span></a>
 <a class="wa-float" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg><span class="t">WhatsApp</span></a>
 </div>
 
@@ -571,7 +571,6 @@ section[id]{scroll-margin-top:84px}
   document.addEventListener('keydown',function(e){if(e.key==='Escape') closeAll();});
   panels.forEach(function(p){p.addEventListener('click',function(e){var a=e.target.closest('a'); if(a && !a.hasAttribute('data-open-panel')) closeAll();});});
   // Al elegir un servicio, queda marcado en el formulario de presupuesto
-  document.querySelectorAll('[data-mail]').forEach(function(a){a.addEventListener('click',function(){closeAll(); setTimeout(function(){var n=document.getElementById('f-nombre'); if(n) n.focus({preventScroll:true});},700);});});
   document.querySelectorAll('[data-svc]').forEach(function(a){a.addEventListener('click',function(){var sel=document.getElementById('f-servicio'); sel.value=a.getAttribute('data-svc'); build();});});
 
   // Cabecera: logo grande arriba, compacto al bajar
