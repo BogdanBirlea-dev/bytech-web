@@ -282,8 +282,100 @@ section[id]{scroll-margin-top:84px}
   .wa-float .t,.mail-float .t{display:none}.wa-float,.mail-float{padding:14px}
   .nav-actions{gap:7px}.wa-btn,.mail-btn,.burger{width:40px;height:40px}.wa-btn svg{width:22px;height:22px}.mail-btn .ico{width:20px;height:20px}
 }
-@media (max-width:389px){.nav .logo{gap:8px}.nav .logo svg{width:38px;height:38px}.nav .wm b{font-size:18.5px}.nav .wm .sv{font-size:6.4px}.nav-actions{gap:6px}.wa-btn,.mail-btn,.burger{width:38px;height:38px}}
-@media (max-width:349px){.nav .logo svg{width:34px;height:34px}.nav .wm b{font-size:16px}.nav .wm .sv{font-size:5.6px}.nav-actions{gap:5px}.wa-btn,.mail-btn,.burger{width:36px;height:36px}}
+@media (max-width:389px){.nav .logo{gap:8px}.nav .logo svg,header.compact .nav .logo svg{width:38px;height:38px}.nav .wm b,header.compact .nav .wm b{font-size:18.5px}.nav .wm .sv,header.compact .nav .wm .sv{font-size:6.4px}.nav-actions{gap:6px}.wa-btn,.mail-btn,.burger{width:38px;height:38px}}
+@media (max-width:349px){.nav .logo svg,header.compact .nav .logo svg{width:34px;height:34px}.nav .wm b,header.compact .nav .wm b{font-size:16px}.nav .wm .sv,header.compact .nav .wm .sv{font-size:5.6px}.nav-actions{gap:5px}.wa-btn,.mail-btn,.burger{width:36px;height:36px}}
+
+/* ---- simulador de presupuesto ---- */
+.sim{background:radial-gradient(ellipse 50% 60% at 85% 10%,rgba(31,123,255,.14),transparent 70%),var(--bg)}
+.sim-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:36px}
+.sim-tab{display:flex;align-items:center;gap:12px;padding:16px 16px;border-radius:14px;background:var(--panel);border:1px solid var(--line-2);color:var(--text);font:600 15px var(--f-body);text-align:left;cursor:pointer;transition:border-color .15s,background .15s;min-width:0}
+.sim-tab:hover{border-color:var(--line)}
+.sim-tab .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none;background:linear-gradient(145deg,rgba(60,200,255,.18),rgba(31,123,255,.12));border:1px solid var(--line);color:var(--cyan)}
+.sim-tab .ic .ico{width:24px;height:24px}
+.sim-tab[aria-selected="true"]{background:var(--panel-2);border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan) inset,0 10px 30px rgba(31,123,255,.18)}
+.sim-tab[aria-selected="true"] .ic{background:linear-gradient(145deg,var(--cyan),var(--blue));color:#04122e;border-color:transparent}
+.sim-body{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.9fr);gap:24px;margin-top:20px;align-items:start}
+.sim-q{border-radius:20px;padding:26px 26px 10px;background:var(--panel);border:1px solid var(--line-2)}
+.sq{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line-2)}
+.sq:last-of-type{border-bottom:0;margin-bottom:0}
+.sq fieldset{border:0;margin:0;padding:0;min-width:0}
+.sq legend,.sq .lb{display:block;padding:0;font-size:15px;font-weight:600;color:var(--text);margin-bottom:12px}
+.sq .hint{font-size:12.5px;color:var(--soft);margin:-6px 0 12px}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.opts[data-n="2"],.opts[data-n="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.opt span{display:block;height:100%;padding:11px 13px;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);transition:border-color .15s,background .15s}
+.opt b{display:block;font-size:14px;font-weight:600;line-height:1.3}
+.opt small{display:block;font-size:12px;color:var(--soft);line-height:1.4;margin-top:3px}
+.opt:hover span{border-color:var(--line)}
+.opt input:checked+span{border-color:var(--cyan);background:var(--panel-2);box-shadow:0 0 0 1px var(--cyan) inset}
+.opt input:checked+span b{color:var(--cyan)}
+.opt input:focus-visible+span{outline:2px solid var(--cyan);outline-offset:2px}
+.nrow{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.nrow .lb{margin:0}
+.nrow .lb small{display:block;font-size:12px;font-weight:400;color:var(--soft);margin-top:2px}
+.stp{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.14);border-radius:11px;overflow:hidden;flex:none;background:rgba(255,255,255,.03)}
+.stp button{width:42px;height:42px;border:0;background:none;color:var(--cyan);font:600 20px var(--f-body);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.stp button:hover{background:var(--panel-2)}
+.stp button:disabled{color:var(--soft);opacity:.45;cursor:default;background:none}
+.stp input,.rv input{width:52px;height:42px;border:0;border-inline:1px solid rgba(255,255,255,.1);background:none;color:var(--text);text-align:center;font:600 16px var(--f-body);font-variant-numeric:tabular-nums;-moz-appearance:textfield;appearance:textfield}
+.stp input::-webkit-outer-spin-button,.stp input::-webkit-inner-spin-button,.rv input::-webkit-outer-spin-button,.rv input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stp input:focus,.rv input:focus{outline:none;background:var(--panel-2)}
+.rng{display:flex;align-items:center;gap:14px}
+.rng input[type=range]{flex:1;min-width:0;accent-color:var(--cyan);height:28px}
+.rv{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.14);border-radius:11px;overflow:hidden;flex:none;background:rgba(255,255,255,.03)}
+.rv input{width:64px;border:0}
+.rv span{padding:0 12px 0 2px;font-size:14px;color:var(--muted)}
+.chks{display:flex;flex-direction:column;gap:8px}
+.ck{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);cursor:pointer;font-size:14px}
+.ck input{width:18px;height:18px;margin:0;accent-color:var(--cyan);flex:none}
+.ck span{flex:1;min-width:0}
+.ck em{font-style:normal;font-size:12.5px;color:var(--cyan);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ck:has(input:checked){border-color:var(--cyan);background:var(--panel-2)}
+.sim-res{position:sticky;top:88px;border-radius:20px;padding:26px 24px;background:radial-gradient(ellipse at 50% 0%,rgba(31,123,255,.28),transparent 70%),rgba(255,255,255,.04);border:1px solid var(--line)}
+.sr-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sr-top small{font-size:13px;color:var(--muted);font-weight:600}
+.sr-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.sr-total{font-size:clamp(30px,3.6vw,40px);font-weight:700;line-height:1.1;margin-top:10px;color:var(--cyan);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.sr-iva{font-size:13px;color:var(--muted);margin-top:4px}
+.sr-lines{list-style:none;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--line-2);display:flex;flex-direction:column;gap:9px}
+.sr-lines li{display:flex;justify-content:space-between;gap:14px;font-size:13.5px;color:var(--muted);line-height:1.4}
+.sr-lines li b{font-weight:600;color:var(--text);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sr-inc{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2)}
+.sr-inc b{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.sr-inc ul{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.sr-inc li{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:var(--text);line-height:1.45}
+.sr-inc li .ico{width:16px;height:16px;color:var(--cyan);margin-top:2px;stroke-width:2}
+.sr-notes{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.sr-notes:empty{display:none}
+.sim-res .btn{width:100%;justify-content:center}
+#sim-pedir{margin-top:20px}
+.sr-alt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:10px}
+.sr-alt .btn{padding:11px 12px;font-size:14px}
+.sr-legal{font-size:11.5px;color:var(--soft);line-height:1.55;margin-top:14px}
+.sim-peek{display:none}
+@media (max-width:960px){
+  .sim-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sim-body{grid-template-columns:minmax(0,1fr)}
+  .sim-res{position:static}
+  .sim-peek{display:flex;position:fixed;left:var(--gx);right:calc(var(--gxr) + 68px);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:65;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(10,26,58,.96);backdrop-filter:blur(8px);border:1px solid var(--cyan);box-shadow:0 12px 30px rgba(0,0,0,.45);color:var(--text);text-decoration:none}
+  .sim-peek.on{opacity:1;transform:none;pointer-events:auto}
+  .sim-peek small{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .sim-peek b{font-size:18px;color:var(--cyan);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .sim-peek span.go{font-size:13px;font-weight:600;color:var(--cyan);white-space:nowrap}
+}
+@media (max-width:600px){
+  .sim-tabs{gap:8px}
+  .sim-tab{gap:10px;padding:11px 10px;font-size:13.5px;line-height:1.3}
+  .sim-tab .ic{width:36px;height:36px;border-radius:10px}
+  .sim-tab .ic .ico{width:21px;height:21px}
+  .sim-q{padding:20px 16px 4px;border-radius:16px}
+  .sim-res{padding:22px 18px}
+  .opts[data-n="3"]{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:389px){.sim-tab{flex-direction:column;align-items:flex-start;gap:8px}.sim-peek span.go{display:none}}
+@media (max-width:359px){.opts[data-n]{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 </head>
@@ -307,6 +399,7 @@ section[id]{scroll-margin-top:84px}
       <li><button type="button" class="nav-svc" data-panel="menu" aria-expanded="false" aria-controls="menu">Servicios<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
       <li><button type="button" class="nav-svc" data-panel="p-boletin" aria-expanded="false" aria-controls="p-boletin">Boletines<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
       <li><button type="button" class="nav-svc" data-panel="p-recarga" aria-expanded="false" aria-controls="p-recarga">Puntos de recarga<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
+      <li><a href="#simulador">Simulador</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav-actions">
@@ -329,7 +422,7 @@ section[id]{scroll-margin-top:84px}
 <a class="mi" href="#contacto" data-svc="Videoportero"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="2.5" width="13" height="19" rx="1.6"/><rect x="7.8" y="5" width="8.4" height="7" rx=".6"/><circle cx="12" cy="7.6" r="1.3"/><path d="M9.8 11.3a2.4 2.4 0 0 1 4.4 0M8.2 16.6c.7-.8 1.8-.8 2.5 0"/><circle cx="15" cy="16.5" r="1"/></svg></span><span><b>Videoporteros</b><span>Porteros automáticos y videoporteros, nuevos o en sustitución.</span></span></a>
 <a class="mi" href="#contacto" data-svc="Redes y cableado"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.6" y="2.6" width="6.8" height="5.2" rx=".8"/><rect x="2.6" y="16.2" width="6.8" height="5.2" rx=".8"/><rect x="14.6" y="16.2" width="6.8" height="5.2" rx=".8"/><path d="M12 7.8V12M6 16.2V12h12v4.2"/></svg></span><span><b>Redes y cableado</b><span>Cableado estructurado RJ45 y tomas de red.</span></span></a>
       </div>
-      <div class="menu-foot"><span>¿Necesitas otra cosa? Cuéntamelo y te digo si puedo hacerlo.</span><div class="mf-btns"><a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>Escríbeme</a><a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Email</a></div></div>
+      <div class="menu-foot"><span>¿Necesitas otra cosa? Cuéntamelo y te digo si puedo hacerlo.</span><div class="mf-btns"><a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>Escríbeme</a><a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Email</a><a class="btn btn-ghost" href="#simulador"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simular precio</a></div></div>
     </div>
   </div>
   <div class="menu" id="p-boletin" hidden>
@@ -350,6 +443,7 @@ section[id]{scroll-margin-top:84px}
       <div class="num num-t">Presupuesto<br>sin compromiso</div>
       <p class="note">Respuesta en menos de 24 h · Tramitación incluida</p>
       <a class="btn btn-main" href="https://wa.me/34639559683?text=Hola%2C%20necesito%20un%20bolet%C3%ADn%20el%C3%A9ctrico" target="_blank" rel="noopener">Pedir mi boletín</a>
+      <a class="btn btn-ghost" href="#simulador" data-sim="boletin" style="margin-top:10px"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simular precio</a>
       <p class="incl">Revisión · Certificado · Tramitación</p>
     </div>
     </div>
@@ -367,7 +461,7 @@ section[id]{scroll-margin-top:84px}
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Certificado <span class="nw">ITC-BT-52</span> incluido</span></li>
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Te informo de las ayudas que haya disponibles</li>
       </ul>
-      <div style="margin-top:28px"><a class="btn btn-main" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20instalar%20un%20punto%20de%20recarga" target="_blank" rel="noopener">Pedir presupuesto de recarga</a></div>
+      <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-main" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20instalar%20un%20punto%20de%20recarga" target="_blank" rel="noopener">Pedir presupuesto de recarga</a><a class="btn btn-ghost" href="#simulador" data-sim="recarga"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simular precio</a></div>
     </div>
     <div class="ev">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/><path d="M2.4 21.2h12.2"/></svg>
@@ -395,7 +489,7 @@ section[id]{scroll-margin-top:84px}
       <div class="cta">
         <a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto por WhatsApp</a>
         <a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Pedir por email</a>
-        <button type="button" class="btn btn-ghost" data-open-menu>Ver servicios</button>
+        <a class="btn btn-ghost" href="#simulador"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simula tu presupuesto</a>
       </div>
       <div class="facts">
         <div class="fact"><strong>Especialista</strong><span>Categoría en baja tensión</span></div>
@@ -427,12 +521,46 @@ section[id]{scroll-margin-top:84px}
 
 <div class="quick">
   <div class="wrap">
-    <a class="q" href="#contacto" data-svc="Boletín eléctrico (CIE)"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.8H6.5a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h11a1.8 1.8 0 0 0 1.8-1.8V8.1z"/><path d="M14 2.8v5.3h5.3"/><path d="m12.6 9.6-3 4.6h2.6l-.9 3.8 3.3-5h-2.6z"/></svg><div><b>Boletín eléctrico</b><span>Presupuesto sin compromiso</span></div></a>
-    <a class="q" href="#contacto" data-svc="Control de acceso"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg><div><b>Control de acceso</b><span>Presupuesto sin compromiso</span></div></a>
-    <a class="q" href="#contacto" data-svc="Punto de recarga"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/></svg><div><b>Punto de recarga</b><span>Presupuesto sin compromiso</span></div></a>
-    <a class="q" href="#contacto" data-svc="Videovigilancia"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg><div><b>Videovigilancia</b><span>Presupuesto sin compromiso</span></div></a>
+    <a class="q" href="#simulador" data-sim="boletin"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.8H6.5a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h11a1.8 1.8 0 0 0 1.8-1.8V8.1z"/><path d="M14 2.8v5.3h5.3"/><path d="m12.6 9.6-3 4.6h2.6l-.9 3.8 3.3-5h-2.6z"/></svg><div><b>Boletín eléctrico</b><span>Simula tu precio</span></div></a>
+    <a class="q" href="#simulador" data-sim="seguridad:acceso"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg><div><b>Control de acceso</b><span>Simula tu precio</span></div></a>
+    <a class="q" href="#simulador" data-sim="recarga"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/></svg><div><b>Punto de recarga</b><span>Simula tu precio</span></div></a>
+    <a class="q" href="#simulador" data-sim="seguridad:camaras"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg><div><b>Videovigilancia</b><span>Simula tu precio</span></div></a>
   </div>
 </div>
+
+<section class="band sim" id="simulador">
+  <div class="wrap">
+    <div class="label">Simulador</div>
+    <h2 class="h2">Simula tu presupuesto</h2>
+    <p class="sub">Responde unas preguntas y ve al momento un precio orientativo, con IVA incluido. Si te encaja, te preparo el presupuesto exacto, gratis y sin compromiso.</p>
+    <div class="sim-tabs" role="tablist" aria-label="Elige el servicio">
+      <button type="button" class="sim-tab" role="tab" id="st-boletin" data-s="boletin" aria-selected="true" aria-controls="sim-panel"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2.8H6.5a1.8 1.8 0 0 0-1.8 1.8v14.8a1.8 1.8 0 0 0 1.8 1.8h11a1.8 1.8 0 0 0 1.8-1.8V8.1z"/><path d="M14 2.8v5.3h5.3"/><path d="m12.6 9.6-3 4.6h2.6l-.9 3.8 3.3-5h-2.6z"/></svg></span><span>Boletín eléctrico</span></button>
+      <button type="button" class="sim-tab" role="tab" id="st-instalacion" data-s="instalacion" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></span><span>Instalación eléctrica</span></button>
+      <button type="button" class="sim-tab" role="tab" id="st-recarga" data-s="recarga" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/></svg></span><span>Punto de recarga</span></button>
+      <button type="button" class="sim-tab" role="tab" id="st-seguridad" data-s="seguridad" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><circle cx="12" cy="10.6" r="1.7"/><path d="M12 12.3v3.4"/></svg></span><span>Seguridad y accesos</span></button>
+    </div>
+    <div class="sim-body" id="sim-panel" role="tabpanel" aria-labelledby="st-boletin">
+      <div>
+        <div class="sim-q" id="sim-q"><noscript><p class="sub" style="margin:0 0 20px">Activa JavaScript para usar el simulador, o escríbeme y te doy el precio.</p></noscript></div>
+        <a class="sim-peek" href="#sim-res" id="sim-peek" aria-hidden="true" tabindex="-1"><span><small>Precio orientativo, IVA incl.</small><b id="sim-peek-total">–</b></span><span class="go">Ver detalle</span></a>
+      </div>
+      <aside class="sim-res" id="sim-res" aria-live="polite">
+        <div class="sr-top"><small id="sim-svc">Boletín eléctrico</small><span class="sr-tag">Orientativo</span></div>
+        <div class="sr-total" id="sim-total">–</div>
+        <div class="sr-iva">IVA incluido</div>
+        <ul class="sr-lines" id="sim-lines"></ul>
+        <div class="sr-inc"><b>Incluye</b><ul id="sim-inc"></ul></div>
+        <p class="sr-notes" id="sim-notes"></p>
+        <button type="button" class="btn btn-main" id="sim-pedir"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14.5 2.5V7H19"/><path d="M8.5 13h7M8.5 17h4.5"/></svg>Pedir presupuesto exacto</button>
+        <div class="sr-alt">
+          <a class="btn btn-wa" id="sim-wa" href="https://wa.me/34639559683" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+          <a class="btn btn-mail" id="sim-mail" href="mailto:info@bytechservicios.es"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Email</a>
+        </div>
+        <p class="sr-legal">Precio orientativo para Madrid y alrededores, calculado con tus respuestas. No es una oferta vinculante: el precio final te lo doy por escrito, gratis y sin compromiso, después de ver la instalación.</p>
+      </aside>
+    </div>
+  </div>
+</section>
 
 <section class="band alt">
   <div class="wrap">
@@ -602,6 +730,355 @@ section[id]{scroll-margin-top:84px}
       try{navigator.clipboard.writeText(txt).then(done,sel);}catch(e){sel();}
     });
   });
+})();
+</script>
+<script>
+// ==================== Simulador de presupuesto ====================
+(function(){
+  var root=document.getElementById('simulador'); if(!root) return;
+
+  /* Precios con IVA incluido: [mínimo, máximo] */
+  var P={"boletin":{"vivienda":{"alta":[150,240],"potencia":[150,240],"titular":[120,200],"reforma":[200,320]},"local":[250,450],"nose":[0,180],"antigua":[150,380],"urgente":[40,70]},"instalacion":{"fijo":[400,600],"m2":[23,38],"elevada":[350,700],"rozas_m2":[8,14],"cuadro_basico":[380.98,477.78],"cuadro_ampliado":[533.47,630.27],"sobretensiones":[232.3,256.5],"boletin_cuadro":[100,180],"minimo":[40,60],"enchufe":[55.87,80.07],"luz":[55.87,80.07],"circuito":[152.41,200.81],"averia":[60.5,84.7],"hora":[48.4,48.4],"urgente":[30,60]},"recarga":{"casa":[545.06,666.06],"casa_m":15,"comunidad":[687.91,881.51],"comunidad_m":20,"metro":[15.5,20.34],"metro_tri":[20.65,25.49],"largo_m":40,"seccion10":[1,1],"trifasica":[100,200],"cargador_mono":[922.19,1209.78],"cargador_tri":[984.22,1368.79],"potencia":[100,180]},"camaras":{"grabador":[601.64,650.04],"grabador16":[820.87,869.27],"interior":[119.28,143.48],"exterior":[211.44,235.64]},"videoportero":{"sustituir":[372.99,421.39],"nuevo":[503.67,600.47],"monitor":[90,160],"abrepuertas":[60,110],"comunidad":[600,950],"vivienda":[75,120],"placa":[350,600]},"acceso":{"puerta":[403.87,452.27],"tarjeta":[20.33,32.43],"huella":[60,120],"facial":[180,320],"iman":[60,120],"movil":[60,120]},"presencia":{"terminal":[250,450],"software":[80,150]}};
+
+  /* ---------- utilidades ---------- */
+  function eur(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
+  function rd(p){var s=p[1]>=1000?50:(p[1]>=100?10:5); return [Math.round(p[0]/s)*s, Math.ceil(p[1]/s)*s];}
+  function rng(p){var r=rd(p); if(r[1]<=0) return 'Incluido'; if(r[0]<=0) return 'hasta '+eur(r[1])+' €'; if(r[0]===r[1]) return eur(r[0])+' €'; return eur(r[0])+' – '+eur(r[1])+' €';}
+  function mul(p,n){return [p[0]*n,p[1]*n];}
+  function add(a,b){return [a[0]+b[0],a[1]+b[1]];}
+  function plus(p){return '+'+rng(p);}
+  function pl(n,uno,varios){return n+' '+(n===1?uno:varios);}
+
+  /* ---------- preguntas y cálculo de cada servicio ---------- */
+  var SERV={
+    boletin:{
+      nombre:'Boletín eléctrico',
+      q:[
+        {id:'inm',t:'¿Para qué es?',type:'opt',d:'vivienda',o:[['vivienda','Vivienda'],['local','Local o negocio']]},
+        {id:'motivo',t:'¿Para qué necesitas el boletín?',type:'opt',d:'alta',show:function(a){return a.inm==='vivienda';},o:[
+          ['alta','Dar de alta la luz','Sin boletín o con boletín caducado'],
+          ['potencia','Subir la potencia'],
+          ['titular','Cambio de titular'],
+          ['reforma','Después de una reforma']]},
+        {id:'estado',t:'¿Cómo está la instalación?',type:'opt',d:'nose',o:[
+          ['bien','Bien','Tiene diferencial y toma de tierra'],
+          ['nose','No lo sé'],
+          ['antigua','Antigua','Sin diferencial o sin toma de tierra']]},
+        {id:'ext',t:'Extras',type:'chk',o:[['urgente','Lo necesito urgente (en 48\u00a0h)',plus(P.boletin.urgente)]]}
+      ],
+      calc:function(a){
+        var L=[], n=[], B=P.boletin;
+        if(a.inm==='local'){ L.push(['Boletín para local o negocio',B.local]); n.push('Si la actividad necesita proyecto técnico, te lo digo antes de empezar.'); }
+        else { var m={alta:'alta de suministro',potencia:'aumento de potencia',titular:'cambio de titular',reforma:'después de una reforma'}; L.push(['Boletín de vivienda: '+m[a.motivo],B.vivienda[a.motivo]]); }
+        if(a.estado==='nose') L.push(['Posibles ajustes si la instalación lo necesita',B.nose]);
+        if(a.estado==='antigua') L.push(['Adecuación: diferencial y toma de tierra',B.antigua]);
+        if(a.ext.urgente) L.push(['Servicio urgente (48\u00a0h)',B.urgente]);
+        if(a.estado!=='bien') n.push('Antes de hacer ningún ajuste te digo qué hace falta y cuánto cuesta.');
+        return {L:L,inc:['Revisión de la instalación','Certificado de instalación (CIE)','Tramitación ante Industria (Comunidad de Madrid)'],n:n,form:'Boletín eléctrico (CIE)'};
+      }
+    },
+    instalacion:{
+      nombre:'Instalación eléctrica',
+      q:[
+        {id:'tipo',t:'¿Qué necesitas?',type:'opt',d:'completa',o:[
+          ['completa','Instalación completa','Vivienda nueva o renovación total'],
+          ['cuadro','Cambiar el cuadro','Protecciones nuevas'],
+          ['puntos','Puntos sueltos','Enchufes, luces o circuitos'],
+          ['averia','Avería o revisión','Algo no funciona o salta la luz']]},
+        {id:'m2',t:'Superficie de la vivienda',type:'range',d:80,min:30,max:250,step:5,u:'m²',show:function(a){return a.tipo==='completa';}},
+        {id:'elec',t:'Nivel de electrificación',type:'opt',d:'basica',show:function(a){return a.tipo==='completa';},o:[
+          ['basica','Básica','La de la mayoría de pisos'],
+          ['elevada','Elevada','Aire acondicionado, calefacción eléctrica o más de 160 m²']]},
+        {id:'obra',t:'¿Cómo está la vivienda?',type:'opt',d:'obra',show:function(a){return a.tipo==='completa';},o:[
+          ['obra','En obra','Paredes abiertas'],
+          ['habitada','Habitada','Hay que hacer rozas y taparlas']]},
+        {id:'cuadro',t:'¿Qué cuadro necesitas?',type:'opt',d:'basico',show:function(a){return a.tipo==='cuadro';},o:[
+          ['basico','Hasta 6 circuitos','Piso pequeño o mediano'],
+          ['ampliado','De 7 a 12 circuitos','Vivienda grande o con muchos aparatos']]},
+        {id:'cext',t:'Extras',type:'chk',show:function(a){return a.tipo==='cuadro';},o:[
+          ['sobretensiones','Protector contra sobretensiones',plus(P.instalacion.sobretensiones)],
+          ['boletin','Boletín (CIE) después del cambio',plus(P.instalacion.boletin_cuadro)]]},
+        {id:'enchufes',t:'Enchufes nuevos',type:'num',d:2,min:0,max:40,show:function(a){return a.tipo==='puntos';}},
+        {id:'luces',t:'Puntos de luz nuevos',type:'num',d:0,min:0,max:40,show:function(a){return a.tipo==='puntos';}},
+        {id:'circuitos',t:'Circuitos nuevos',sub:'Aire acondicionado, horno, placa…',type:'num',d:0,min:0,max:10,show:function(a){return a.tipo==='puntos';}},
+        {id:'aext',t:'Extras',type:'chk',show:function(a){return a.tipo==='averia';},o:[['urgente','Urgente (en el mismo día)',plus(P.instalacion.urgente)]]}
+      ],
+      calc:function(a){
+        var I=P.instalacion, L=[], inc=[], n=[], form='Instalación eléctrica';
+        if(a.tipo==='completa'){
+          L.push(['Instalación completa de '+a.m2+' m²',add(I.fijo,mul(I.m2,a.m2))]);
+          if(a.elec==='elevada') L.push(['Electrificación elevada (más circuitos)',I.elevada]);
+          if(a.obra==='habitada') L.push(['Rozas y tapado de paredes',mul(I.rozas_m2,a.m2)]);
+          inc=['Cuadro nuevo con todas las protecciones','Cableado, cajas y mecanismos','Boletín (CIE) y legalización'];
+          n.push('No incluye pintura ni lámparas.');
+        } else if(a.tipo==='cuadro'){
+          L.push(['Cambio de cuadro ('+(a.cuadro==='basico'?'hasta 6':'7 a 12')+' circuitos)',a.cuadro==='basico'?I.cuadro_basico:I.cuadro_ampliado]);
+          if(a.cext.sobretensiones) L.push(['Protector contra sobretensiones',I.sobretensiones]);
+          if(a.cext.boletin) L.push(['Boletín (CIE)',I.boletin_cuadro]);
+          inc=['Cuadro, protecciones y montaje','Comprobación de diferenciales y toma de tierra'];
+          form='Cuadro eléctrico o avería';
+        } else if(a.tipo==='puntos'){
+          L.push(['Desplazamiento y puesta en marcha',I.minimo]);
+          if(a.enchufes) L.push([pl(a.enchufes,'enchufe nuevo','enchufes nuevos'),mul(I.enchufe,a.enchufes)]);
+          if(a.luces) L.push([pl(a.luces,'punto de luz','puntos de luz'),mul(I.luz,a.luces)]);
+          if(a.circuitos) L.push([pl(a.circuitos,'circuito nuevo','circuitos nuevos'),mul(I.circuito,a.circuitos)]);
+          if(!a.enchufes && !a.luces && !a.circuitos) n.push('Añade al menos un enchufe, punto de luz o circuito.');
+          inc=['Material y mano de obra','Mecanismos de gama estándar'];
+        } else {
+          L.push(['Desplazamiento, diagnóstico y primera hora',I.averia]);
+          if(a.aext.urgente) L.push(['Servicio urgente',I.urgente]);
+          inc=['Desplazamiento','Localización de la avería','Primera hora de trabajo'];
+          n.push('Cada hora más: '+eur(I.hora[0])+' €. Las piezas que haya que cambiar te las digo antes de ponerlas.');
+          form='Cuadro eléctrico o avería';
+        }
+        return {L:L,inc:inc,n:n,form:form};
+      }
+    },
+    recarga:{
+      nombre:'Punto de recarga',
+      q:[
+        {id:'donde',t:'¿Dónde va el cargador?',type:'opt',d:'casa',o:[
+          ['casa','Casa con garaje propio','Chalet o adosado'],
+          ['comunidad','Garaje comunitario','Plaza en el garaje del edificio']]},
+        {id:'metros',t:'Distancia hasta la plaza',type:'range',d:15,min:3,max:150,step:1,u:'m',hint:function(a){return a.donde==='comunidad'?'Desde tu contador, en el cuarto de contadores, hasta tu plaza. Si no lo sabes, pon una estimación.':'Desde el cuadro eléctrico de tu casa hasta donde va el cargador.';}},
+        {id:'fase',t:'Tipo de suministro',type:'opt',d:'mono',o:[
+          ['mono','Monofásico','Hasta 7,4 kW, lo normal en viviendas'],
+          ['tri','Trifásico','11 o 22 kW, si tienes luz trifásica']]},
+        {id:'carg',t:'¿Incluimos el cargador?',type:'opt',d:'si',o:[
+          ['si','Sí, inclúyelo','Simon u Orbis, con garantía'],
+          ['no','No, ya lo tengo']]},
+        {id:'rext',t:'Extras',type:'chk',o:[['potencia','Tramitar un aumento de potencia',plus(P.recarga.potencia)]]}
+      ],
+      calc:function(a){
+        var R=P.recarga, L=[], casa=a.donde==='casa', incl=casa?R.casa_m:R.comunidad_m, extra=Math.max(0,a.metros-incl);
+        L.push([(casa?'Instalación en casa':'Instalación en garaje comunitario')+' (hasta '+incl+' m)',casa?R.casa:R.comunidad]);
+        if(extra) L.push([extra+' m más de línea',mul(a.fase==='tri'?R.metro_tri:R.metro,extra)]);
+        if(a.metros>R.largo_m) L.push(['Cable de 10 mm² en vez de 6 mm² (más de '+R.largo_m+' m)',mul(R.seccion10,a.metros*(a.fase==='tri'?5:3))]);
+        if(a.fase==='tri') L.push(['Suplemento por instalación trifásica',R.trifasica]);
+        if(a.carg==='si') L.push([a.fase==='tri'?'Cargador trifásico 11/22 kW':'Cargador 7,4 kW',a.fase==='tri'?R.cargador_tri:R.cargador_mono]);
+        if(a.rext.potencia) L.push(['Trámite de aumento de potencia',R.potencia]);
+        var inc=['Línea exclusiva para el cargador','Protecciones, también contra sobretensiones','Certificado ITC-BT-52 y tramitación'];
+        if(!casa) inc.push('Documentación para comunicarlo a la comunidad');
+        return {L:L,inc:inc,n:['Te informo de las ayudas que haya disponibles.'],form:'Punto de recarga'};
+      }
+    },
+    seguridad:{
+      nombre:'Seguridad y accesos',
+      q:[
+        {id:'sub',t:'¿Qué quieres instalar?',type:'opt',d:'camaras',o:[
+          ['camaras','Cámaras','Videovigilancia'],
+          ['videoportero','Videoportero','Casa o comunidad'],
+          ['acceso','Control de acceso','Tarjeta, código, huella…'],
+          ['presencia','Control de presencia','Fichaje del personal']]},
+        {id:'cint',t:'Cámaras interiores',type:'num',d:2,min:0,max:16,show:function(a){return a.sub==='camaras';}},
+        {id:'cext',t:'Cámaras exteriores',sub:'Antivandálicas, con visión nocturna',type:'num',d:2,min:0,max:16,show:function(a){return a.sub==='camaras';}},
+        {id:'uso',t:'¿Dónde van?',type:'opt',d:'vivienda',show:function(a){return a.sub==='camaras';},o:[['vivienda','Vivienda'],['negocio','Negocio o comunidad']]},
+        {id:'vtipo',t:'¿Para dónde es?',type:'opt',d:'casa',show:function(a){return a.sub==='videoportero';},o:[
+          ['casa','Una vivienda','Casa o chalet'],
+          ['comunidad','Comunidad de vecinos','Placa de calle y monitores']]},
+        {id:'vcasa',t:'¿Qué hay ahora?',type:'opt',d:'sustituir',show:function(a){return a.sub==='videoportero'&&a.vtipo==='casa';},o:[
+          ['sustituir','Ya tengo uno','Se cambia aprovechando el cableado'],
+          ['nuevo','No hay nada','Instalación nueva con cableado']]},
+        {id:'monit',t:'Monitores adicionales',sub:'Para otra planta o habitación',type:'num',d:0,min:0,max:3,show:function(a){return a.sub==='videoportero'&&a.vtipo==='casa';}},
+        {id:'vext',t:'Extras',type:'chk',show:function(a){return a.sub==='videoportero'&&a.vtipo==='casa';},o:[['abrepuertas','Abrepuertas eléctrico nuevo',plus(P.videoportero.abrepuertas)]]},
+        {id:'viv',t:'Número de viviendas',type:'num',d:12,min:2,max:80,show:function(a){return a.sub==='videoportero'&&a.vtipo==='comunidad';}},
+        {id:'placas',t:'Accesos con placa de calle',sub:'Portales o puertas con llamada',type:'num',d:1,min:1,max:4,show:function(a){return a.sub==='videoportero'&&a.vtipo==='comunidad';}},
+        {id:'puertas',t:'Número de puertas',type:'num',d:1,min:1,max:10,show:function(a){return a.sub==='acceso';}},
+        {id:'ident',t:'¿Cómo se abrirá?',type:'opt',d:'tarjeta',show:function(a){return a.sub==='acceso';},o:[
+          ['teclado','Código','Teclado numérico'],
+          ['tarjeta','Tarjeta o llavero','Incluye 10 llaveros'],
+          ['huella','Huella'],
+          ['facial','Reconocimiento facial']]},
+        {id:'cerr',t:'Cierre de la puerta',type:'opt',d:'abrepuertas',show:function(a){return a.sub==='acceso';},o:[
+          ['abrepuertas','Abrepuertas eléctrico','Puerta con cerradura normal'],
+          ['iman','Cerradura electromagnética','Puertas de cristal o de mucho paso']]},
+        {id:'aext',t:'Extras',type:'chk',show:function(a){return a.sub==='acceso';},o:[['movil','Abrir y gestionar desde el móvil',plus(P.acceso.movil)+' por puerta']]},
+        {id:'term',t:'Terminales de fichaje',type:'num',d:1,min:1,max:5,show:function(a){return a.sub==='presencia';}},
+        {id:'pext',t:'Extras',type:'chk',dd:{software:true},show:function(a){return a.sub==='presencia';},o:[['software','Puesta en marcha del programa de fichaje',plus(P.presencia.software)]]}
+      ],
+      calc:function(a){
+        var L=[], inc=[], n=[], form='Videovigilancia';
+        if(a.sub==='camaras'){
+          var C=P.camaras, tot=a.cint+a.cext;
+          L.push(['Grabador con disco duro y configuración',tot>8?C.grabador16:C.grabador]);
+          if(a.cint) L.push([pl(a.cint,'cámara interior','cámaras interiores'),mul(C.interior,a.cint)]);
+          if(a.cext) L.push([pl(a.cext,'cámara exterior','cámaras exteriores'),mul(C.exterior,a.cext)]);
+          if(!tot) n.push('Añade al menos una cámara.');
+          inc=['Cámaras IP de buena resolución','Cableado y montaje','Acceso desde tu móvil'];
+          if(a.uso==='negocio') inc.push('Cartel de zona videovigilada');
+        } else if(a.sub==='videoportero'){
+          var V=P.videoportero; form='Videoportero';
+          if(a.vtipo==='casa'){
+            L.push([a.vcasa==='sustituir'?'Videoportero (sustituyendo el actual)':'Videoportero nuevo con cableado',a.vcasa==='sustituir'?V.sustituir:V.nuevo]);
+            if(a.monit) L.push([pl(a.monit,'monitor adicional','monitores adicionales'),mul(V.monitor,a.monit)]);
+            if(a.vext.abrepuertas) L.push(['Abrepuertas eléctrico',V.abrepuertas]);
+            inc=['Placa de calle y monitor','Montaje y conexión','Puesta en marcha'];
+          } else {
+            L.push(['Placa de calle, fuente y puesta en marcha',V.comunidad]);
+            L.push([a.viv+' viviendas (monitor y conexión)',mul(V.vivienda,a.viv)]);
+            if(a.placas>1) L.push([pl(a.placas-1,'acceso más','accesos más'),mul(V.placa,a.placas-1)]);
+            inc=['Placa de calle y monitores','Montaje y conexión en cada vivienda','Puesta en marcha'];
+            n.push('Si hay que cambiar el cableado del edificio, te lo indico antes.');
+          }
+        } else if(a.sub==='acceso'){
+          var A=P.acceso, per=A.puerta; form='Control de acceso';
+          if(a.ident==='tarjeta') per=add(per,A.tarjeta); if(a.ident==='huella') per=add(per,A.huella); if(a.ident==='facial') per=add(per,A.facial);
+          var nom={teclado:'código',tarjeta:'tarjeta',huella:'huella',facial:'reconocimiento facial'};
+          L.push([pl(a.puertas,'puerta','puertas')+' con '+nom[a.ident],mul(per,a.puertas)]);
+          if(a.cerr==='iman') L.push(['Cerradura electromagnética',mul(A.iman,a.puertas)]);
+          if(a.aext.movil) L.push(['Gestión desde el móvil',mul(A.movil,a.puertas)]);
+          inc=['Lector y fuente de alimentación',a.cerr==='iman'?'Cerradura y pulsador de salida':'Abrepuertas y pulsador de salida','Configuración y alta de usuarios'];
+        } else {
+          var Pr=P.presencia; form='Control de presencia';
+          L.push([pl(a.term,'terminal de fichaje','terminales de fichaje'),mul(Pr.terminal,a.term)]);
+          if(a.pext.software) L.push(['Puesta en marcha del programa',Pr.software]);
+          inc=['Terminal de huella, tarjeta o facial','Montaje y conexión','Formación para usarlo'];
+          n.push('Si el programa de fichaje tiene cuota mensual, no está incluida.');
+        }
+        return {L:L,inc:inc,n:n,form:form};
+      }
+    }
+  };
+
+  /* ---------- estado ---------- */
+  var cur='boletin', A={};
+  Object.keys(SERV).forEach(function(k){
+    var a={}; SERV[k].q.forEach(function(q){ a[q.id]= q.type==='chk' ? JSON.parse(JSON.stringify(q.dd||{})) : q.d; }); A[k]=a;
+  });
+
+  var qbox=document.getElementById('sim-q'), tabs=[].slice.call(root.querySelectorAll('.sim-tab'));
+  var tick='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
+
+  function ctrl(q,a){
+    var id='sq-'+q.id, h='';
+    if(q.type==='opt'){
+      h+='<fieldset><legend>'+q.t+'</legend><div class="opts" data-n="'+q.o.length+'">';
+      q.o.forEach(function(o){ h+='<label class="opt"><input type="radio" name="'+id+'" value="'+o[0]+'"'+(a[q.id]===o[0]?' checked':'')+'><span><b>'+o[1]+'</b>'+(o[2]?'<small>'+o[2]+'</small>':'')+'</span></label>'; });
+      return h+'</div></fieldset>';
+    }
+    if(q.type==='chk'){
+      h+='<fieldset><legend>'+q.t+'</legend><div class="chks">';
+      q.o.forEach(function(o){ h+='<label class="ck"><input type="checkbox" value="'+o[0]+'"'+(a[q.id][o[0]]?' checked':'')+'><span>'+o[1]+'</span>'+(o[2]?'<em>'+o[2]+'</em>':'')+'</label>'; });
+      return h+'</div></fieldset>';
+    }
+    if(q.type==='num'){
+      return '<div class="nrow"><label class="lb" for="'+id+'">'+q.t+(q.sub?'<small>'+q.sub+'</small>':'')+'</label><div class="stp"><button type="button" data-d="-1" aria-label="Quitar uno">−</button><input id="'+id+'" type="number" inputmode="numeric" min="'+q.min+'" max="'+q.max+'" step="1" value="'+a[q.id]+'"><button type="button" data-d="1" aria-label="Añadir uno">+</button></div></div>';
+    }
+    // range
+    return '<label class="lb" for="'+id+'">'+q.t+'</label><p class="hint" data-hint></p><div class="rng"><input type="range" id="'+id+'" min="'+q.min+'" max="'+q.max+'" step="'+q.step+'" value="'+a[q.id]+'"><span class="rv"><input type="number" inputmode="numeric" min="'+q.min+'" max="'+q.max+'" step="'+q.step+'" value="'+a[q.id]+'" aria-label="'+q.t+' en '+q.u+'"><span>'+q.u+'</span></span></div>';
+  }
+
+  function render(){
+    var s=SERV[cur], a=A[cur], h='';
+    s.q.forEach(function(q){ h+='<div class="sq" data-q="'+q.id+'">'+ctrl(q,a)+'</div>'; });
+    qbox.innerHTML=h;
+    tabs.forEach(function(t){ var on=t.getAttribute('data-s')===cur; t.setAttribute('aria-selected',on?'true':'false'); t.tabIndex=on?0:-1; });
+    document.getElementById('sim-panel').setAttribute('aria-labelledby','st-'+cur);
+    update();
+  }
+
+  function clamp(q,v){ v=parseFloat(v); if(isNaN(v)) v=q.d; return Math.min(q.max,Math.max(q.min,Math.round(v))); }
+
+  function read(){
+    var s=SERV[cur], a=A[cur];
+    s.q.forEach(function(q){
+      var el=qbox.querySelector('[data-q="'+q.id+'"]'); if(!el) return;
+      if(q.type==='opt'){ var r=el.querySelector('input:checked'); if(r) a[q.id]=r.value; }
+      else if(q.type==='chk'){ var o={}; [].forEach.call(el.querySelectorAll('input:checked'),function(c){o[c.value]=true;}); a[q.id]=o; }
+      else { a[q.id]=clamp(q,el.querySelector('input[type=number]').value); }
+    });
+  }
+
+  var last=null;
+  function update(){
+    read();
+    var s=SERV[cur], a=A[cur];
+    s.q.forEach(function(q){
+      var el=qbox.querySelector('[data-q="'+q.id+'"]'); if(!el) return;
+      el.hidden=!!(q.show && !q.show(a));
+      if(q.type==='range'){ var hn=el.querySelector('[data-hint]'), tx=q.hint?q.hint(a):''; hn.textContent=tx; hn.hidden=!tx; }
+      if(q.type==='num'){ var b=el.querySelectorAll('button'); b[0].disabled=a[q.id]<=q.min; b[1].disabled=a[q.id]>=q.max; }
+    });
+    // la última pregunta visible no lleva línea debajo
+    var vis=[].filter.call(qbox.querySelectorAll('.sq'),function(e){return !e.hidden;});
+    vis.forEach(function(e,i){ e.style.borderBottom=i===vis.length-1?'0':''; e.style.marginBottom=i===vis.length-1?'0':''; });
+
+    var r=s.calc(a), tot=[0,0];
+    r.L.forEach(function(l){ tot=add(tot,l[1]); });
+    var T=rng(tot);
+    document.getElementById('sim-svc').textContent=s.nombre;
+    document.getElementById('sim-total').textContent=T;
+    document.getElementById('sim-peek-total').textContent=T;
+    document.getElementById('sim-lines').innerHTML=r.L.map(function(l){return '<li><span>'+l[0]+'</span><b>'+rng(l[1])+'</b></li>';}).join('');
+    document.getElementById('sim-inc').innerHTML=r.inc.map(function(t){return '<li>'+tick+'<span>'+t+'</span></li>';}).join('');
+    document.getElementById('sim-notes').textContent=r.n.join(' ');
+
+    // resumen para WhatsApp, email y formulario
+    var res=['Servicio: '+s.nombre];
+    s.q.forEach(function(q){
+      if(q.show && !q.show(a)) return;
+      var v=a[q.id], txt='';
+      if(q.type==='opt'){ q.o.forEach(function(o){ if(o[0]===v) txt=o[1]; }); }
+      else if(q.type==='chk'){ txt=q.o.filter(function(o){return v[o[0]];}).map(function(o){return o[1];}).join(', '); }
+      else if(q.type==='range'){ txt=v+' '+q.u; }
+      else { txt=String(v); }
+      if(txt) res.push('- '+(q.t==='Extras'?'Extras':q.t.replace(/^¿|\?$/g,''))+': '+txt);
+    });
+    res.push('Precio orientativo del simulador: '+T+' (IVA incluido)');
+    last={form:r.form, texto:res.join('\n'), det:res.slice(1).join('\n'), nombre:s.nombre};
+    document.getElementById('sim-wa').href='https://wa.me/34639559683?text='+encodeURIComponent('Hola, he usado el simulador de la web y quiero el presupuesto exacto.\n'+last.texto);
+    document.getElementById('sim-mail').href='mailto:info@bytechservicios.es?subject='+encodeURIComponent('Presupuesto: '+s.nombre)+'&body='+encodeURIComponent('Hola, he usado el simulador de la web y quiero el presupuesto exacto.\n\n'+last.texto+'\n\nMi nombre:\nMi teléfono:\nLocalidad:\n');
+  }
+
+  /* ---------- eventos ---------- */
+  qbox.addEventListener('click',function(e){
+    var b=e.target.closest('.stp button'); if(!b) return;
+    var inp=b.parentNode.querySelector('input'), d=parseInt(b.getAttribute('data-d'),10);
+    var v=parseInt(inp.value,10); if(isNaN(v)) v=0; v+=d;
+    v=Math.min(parseInt(inp.max,10),Math.max(parseInt(inp.min,10),v)); inp.value=v; update();
+  });
+  qbox.addEventListener('input',function(e){
+    var t=e.target;
+    if(t.type==='range'){ t.parentNode.querySelector('.rv input').value=t.value; }
+    else if(t.type==='number' && t.closest('.rv')){ var v=parseFloat(t.value); if(!isNaN(v)) t.closest('.rng').querySelector('input[type=range]').value=v; }
+    update();
+  });
+  qbox.addEventListener('change',function(e){
+    var t=e.target;
+    if(t.type==='number'){ var q=null, id=t.closest('.sq').getAttribute('data-q'); SERV[cur].q.forEach(function(x){if(x.id===id) q=x;}); if(q){ t.value=clamp(q,t.value); var rg=t.closest('.sq').querySelector('input[type=range]'); if(rg) rg.value=t.value; } }
+    update();
+  });
+  function pick(k,sub){ if(!SERV[k]) return; cur=k; if(sub) A[k].sub=sub; render(); }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ pick(t.getAttribute('data-s')); });
+    t.addEventListener('keydown',function(e){
+      var j=null; if(e.key==='ArrowRight'||e.key==='ArrowDown') j=(i+1)%tabs.length; if(e.key==='ArrowLeft'||e.key==='ArrowUp') j=(i-1+tabs.length)%tabs.length;
+      if(j!==null){ e.preventDefault(); pick(tabs[j].getAttribute('data-s')); tabs[j].focus(); }
+    });
+  });
+  // Enlaces de otras partes de la web que abren el simulador con un servicio elegido (data-sim="seguridad:acceso")
+  document.querySelectorAll('[data-sim]').forEach(function(l){
+    l.addEventListener('click',function(){ var p=l.getAttribute('data-sim').split(':'); pick(p[0],p[1]); });
+  });
+  // En móvil: resumen flotante mientras se ven las preguntas y no el resultado
+  if('IntersectionObserver' in window){
+    var peek=document.getElementById('sim-peek'), seeQ=false, seeR=false;
+    function pk(){ peek.classList.toggle('on', seeQ && !seeR); }
+    new IntersectionObserver(function(es){ seeQ=es[es.length-1].isIntersecting; pk(); },{rootMargin:'0px 0px -35% 0px'}).observe(qbox);
+    new IntersectionObserver(function(es){ seeR=es[es.length-1].isIntersecting; pk(); },{threshold:0.01}).observe(document.getElementById('sim-res'));
+  }
+  document.getElementById('sim-peek').addEventListener('click',function(e){ e.preventDefault(); document.getElementById('sim-res').scrollIntoView({behavior:'smooth',block:'start'}); });
+  // Pedir presupuesto exacto: rellena el formulario de contacto con la simulación
+  document.getElementById('sim-pedir').addEventListener('click',function(){
+    if(!last) return;
+    var sel=document.getElementById('f-servicio'), msg=document.getElementById('f-msg');
+    sel.value=last.form;
+    msg.value='Simulación hecha en la web ('+last.nombre+'):\n'+last.det+'\n\nMás detalles: ';
+    msg.dispatchEvent(new Event('input',{bubbles:true}));
+    document.getElementById('contacto').scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(function(){ try{ document.getElementById('f-nombre').focus({preventScroll:true}); }catch(err){} },600);
+  });
+  render();
 })();
 </script>
 
