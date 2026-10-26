@@ -63,7 +63,9 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rg
 header.compact .nav{height:68px}header.compact .nav .logo{gap:12px}header.compact .nav .logo svg{width:44px;height:44px}
 header.compact .nav .wm b{font-size:21px}header.compact .nav .wm .sv{font-size:7.2px}header.compact .nav .wm em{display:none}
 .nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
-.nav ul a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500}
+.nav ul a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;display:inline-block;padding-block:12px}
+.nav-svc{padding-block:12px!important}
+.dato b a{display:inline-block;padding-block:2px}
 .nav ul a:hover{color:var(--cyan)}
 .nav .btn{padding:9px 16px;font-size:14px}
 
@@ -144,10 +146,18 @@ a.q:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
 .dato small{display:block;font-size:12px;color:var(--soft)}
 .dato b{font-size:16px;font-weight:600;word-break:break-word}
 .dato .grow{flex:1;min-width:0}
-.copy{background:none;border:1px solid var(--line);color:var(--cyan);border-radius:8px;padding:7px 12px;font:600 12.5px var(--f-body);cursor:pointer;flex:none}
+.copy{background:none;border:1px solid var(--line);color:var(--cyan);border-radius:8px;padding:7px 12px;min-height:36px;font:600 12.5px var(--f-body);cursor:pointer;flex:none}
 .copy:hover{background:var(--panel-2)}
 form{border-radius:20px;padding:30px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
-form h3{font-size:20px;margin-bottom:18px}
+form h3{font-size:20px;margin-bottom:6px}
+.form-req{font-size:12.5px;color:var(--soft);margin-bottom:16px}
+.req{color:var(--cyan);margin-left:3px}
+.field-err{font-size:12.5px;font-weight:600;color:#ff9a9a;margin-top:2px}
+.chk .field-err{margin:6px 0 0}
+.field [aria-invalid="true"]{border-color:#ff9a9a}
+.field input::placeholder,.field textarea::placeholder{color:var(--soft);opacity:1}
+.skip{position:absolute;left:var(--gx);top:-80px;z-index:100;background:var(--cyan);color:#04122e;font-weight:700;padding:12px 18px;border-radius:10px;text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .field label{font-size:12.5px;font-weight:600;color:var(--muted)}
 .field input,.field select,.field textarea{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:11px 13px;font:15px var(--f-body);color:var(--text)}
@@ -166,7 +176,7 @@ button.btn{font-family:inherit}button.btn:disabled{opacity:.6;cursor:wait}
 .btn .ico{width:18px;height:18px;stroke-width:2}
 .form-status{min-height:1.4em;font-size:14px;font-weight:600;margin-top:12px;text-align:center}
 .form-status.ok{color:#5be39a}.form-status.err{color:#ff9a9a}
-.rgpd{font-size:11.5px;color:var(--soft);line-height:1.55;margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2)}
+.rgpd{font-size:12px;color:var(--soft);line-height:1.55;margin-top:14px;padding-top:12px;border-top:1px solid var(--line-2)}
 .rgpd b{color:var(--muted);font-weight:600}
 
 /* ---- pie ---- */
@@ -178,9 +188,10 @@ footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-s
 .foot h4{margin:0 0 14px;font-size:13px;font-weight:600;color:var(--text)}
 .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
 .foot ul a,.foot ul li{font-size:13px;color:var(--soft);text-decoration:none}
+.foot ul a{display:inline-block;padding-block:4px}
 .foot ul a:hover{color:var(--cyan)}
 .legal{margin-top:36px;padding-top:20px;border-top:1px solid var(--line-2);font-size:12px;color:#6d84a8;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
-.legal-links{display:flex;flex-wrap:wrap;gap:8px 18px}.legal-links a{color:#8fa6c8;text-decoration:none}.legal-links a:hover{color:var(--cyan)}
+.legal-links{display:flex;flex-wrap:wrap;gap:8px 18px}.legal-links a{color:#8fa6c8;text-decoration:none;display:inline-block;padding-block:4px}.legal-links a:hover{color:var(--cyan)}
 
 /* ---- botones flotantes: email + WhatsApp ---- */
 .floats{position:fixed;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
@@ -239,7 +250,7 @@ footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-s
 .g-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 4px 14px}
 .g-title{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
 .g-nav{display:flex;gap:8px}
-.g-btn{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--line);color:var(--text);cursor:pointer}
+.g-btn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--panel);border:1px solid var(--line);color:var(--text);cursor:pointer}
 .g-btn:hover{border-color:var(--cyan);color:var(--cyan)}
 .g-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .g-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:14px;scrollbar-width:none;outline-offset:4px}
@@ -253,10 +264,11 @@ footer .wm b{font-size:40px}footer .wm .sv{font-size:10.5px}footer .wm em{font-s
 .ph::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(60,160,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(60,160,255,.08) 1px,transparent 1px);background-size:28px 28px}
 .ph-art{position:absolute;inset:0 0 22%;display:flex;align-items:center;justify-content:center;color:var(--cyan)}
 .ph-art .ico{width:34%;height:auto;max-width:150px;stroke-width:1.1;filter:drop-shadow(0 0 18px rgba(60,200,255,.45))}
-.chip{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:var(--cyan);background:rgba(7,18,42,.75);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
-.g-dots{display:flex;justify-content:center;gap:8px;padding-top:14px}
-.g-dot{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.22);cursor:pointer;transition:width .2s,background .2s}
-.g-dot[aria-current="true"]{width:22px;background:var(--cyan)}
+.chip{position:absolute;top:14px;left:14px;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--cyan);background:rgba(7,18,42,.75);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+.g-dots{display:flex;justify-content:center;gap:2px;padding-top:8px}
+.g-dot{min-width:24px;height:24px;border:0;padding:0 2px;background:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.g-dot::before{content:"";width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.22);transition:width .2s,background .2s}
+.g-dot[aria-current="true"]::before{width:22px;background:var(--cyan)}
 section[id]{scroll-margin-top:84px}
 
 /* ---- responsive ---- */
@@ -336,7 +348,7 @@ section[id]{scroll-margin-top:84px}
 .sim-res{position:sticky;top:88px;border-radius:20px;padding:26px 24px;background:radial-gradient(ellipse at 50% 0%,rgba(31,123,255,.28),transparent 70%),rgba(255,255,255,.04);border:1px solid var(--line)}
 .sr-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .sr-top small{font-size:13px;color:var(--muted);font-weight:600}
-.sr-tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
+.sr-tag{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--line);border-radius:999px;padding:3px 9px;white-space:nowrap}
 .sr-total{font-size:clamp(30px,3.6vw,40px);font-weight:700;line-height:1.1;margin-top:10px;color:var(--cyan);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
 .sr-iva{font-size:13px;color:var(--muted);margin-top:4px}
 .sr-lines{list-style:none;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--line-2);display:flex;flex-direction:column;gap:9px}
@@ -353,7 +365,7 @@ section[id]{scroll-margin-top:84px}
 #sim-pedir{margin-top:20px}
 .sr-alt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:10px}
 .sr-alt .btn{padding:11px 12px;font-size:14px}
-.sr-legal{font-size:11.5px;color:var(--soft);line-height:1.55;margin-top:14px}
+.sr-legal{font-size:12px;color:var(--soft);line-height:1.55;margin-top:14px}
 .sim-peek{display:none}
 @media (max-width:960px){
   .sim-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -361,7 +373,7 @@ section[id]{scroll-margin-top:84px}
   .sim-res{position:static}
   .sim-peek{display:flex;position:fixed;left:var(--gx);right:calc(var(--gxr) + 68px);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:65;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(10,26,58,.96);backdrop-filter:blur(8px);border:1px solid var(--cyan);box-shadow:0 12px 30px rgba(0,0,0,.45);color:var(--text);text-decoration:none}
   .sim-peek.on{opacity:1;transform:none;pointer-events:auto}
-  .sim-peek small{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .sim-peek small{display:block;font-size:12px;color:var(--muted);white-space:nowrap}
   .sim-peek b{font-size:18px;color:var(--cyan);font-variant-numeric:tabular-nums;white-space:nowrap}
   .sim-peek span.go{font-size:13px;font-weight:600;color:var(--cyan);white-space:nowrap}
 }
@@ -389,6 +401,7 @@ section[id]{scroll-margin-top:84px}
   </defs>
 </svg>
 
+<a class="skip" href="#inicio">Saltar al contenido</a>
 <header>
   <div class="wrap nav">
     <a class="logo" href="#inicio" aria-label="BY-TECH Servicios, inicio">
@@ -422,14 +435,14 @@ section[id]{scroll-margin-top:84px}
 <a class="mi" href="#contacto" data-svc="Videoportero"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="2.5" width="13" height="19" rx="1.6"/><rect x="7.8" y="5" width="8.4" height="7" rx=".6"/><circle cx="12" cy="7.6" r="1.3"/><path d="M9.8 11.3a2.4 2.4 0 0 1 4.4 0M8.2 16.6c.7-.8 1.8-.8 2.5 0"/><circle cx="15" cy="16.5" r="1"/></svg></span><span><b>Videoporteros</b><span>Porteros automáticos y videoporteros, nuevos o en sustitución.</span></span></a>
 <a class="mi" href="#contacto" data-svc="Redes y cableado"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.6" y="2.6" width="6.8" height="5.2" rx=".8"/><rect x="2.6" y="16.2" width="6.8" height="5.2" rx=".8"/><rect x="14.6" y="16.2" width="6.8" height="5.2" rx=".8"/><path d="M12 7.8V12M6 16.2V12h12v4.2"/></svg></span><span><b>Redes y cableado</b><span>Cableado estructurado RJ45 y tomas de red.</span></span></a>
       </div>
-      <div class="menu-foot"><span>¿Necesitas otra cosa? Cuéntamelo y te digo si puedo hacerlo.</span><div class="mf-btns"><a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>Escríbeme</a><a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Email</a><a class="btn btn-ghost" href="#simulador"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simular precio</a></div></div>
+      <div class="menu-foot"><span>Si buscas otro trabajo, cuéntamelo y te digo si puedo hacerlo.</span><div class="mf-btns"><a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>Escríbeme</a><a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Email</a><a class="btn btn-ghost" href="#simulador"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simular precio</a></div></div>
     </div>
   </div>
   <div class="menu" id="p-boletin" hidden>
     <div class="wrap pb">
     <div>
       <div class="label">Boletín eléctrico</div>
-      <h3 class="pb-title">El boletín eléctrico que necesitas, sin complicaciones</h3>
+      <h3 class="pb-title">Boletín eléctrico para tu vivienda o local</h3>
       <p class="sub">Reviso la instalación, emito el certificado y lo tramito ante Industria de la Comunidad de Madrid.</p>
       <ul class="checks">
         <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Viviendas: alta de suministro, cambio de titular y aumento de potencia</li>
@@ -466,13 +479,13 @@ section[id]{scroll-margin-top:84px}
     <div class="ev">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/><path d="M2.4 21.2h12.2"/></svg>
       <h3>Recarga en casa</h3>
-      <p>Carga el coche cada noche en tu garaje, sin depender de cargadores públicos.</p>
+      <p>Cargas el coche por la noche en tu garaje, en las horas en que la luz es más barata.</p>
     </div>
     </div>
   </div>
 </header>
 
-<main id="inicio">
+<main id="inicio" tabindex="-1">
 <section class="hero">
   <svg class="traces" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <defs><radialGradient id="dot"><stop offset="0" stop-color="#e6fbff"/><stop offset=".35" stop-color="#40c8ff"/><stop offset="1" stop-color="#1a6fff" stop-opacity="0"/></radialGradient></defs>
@@ -484,8 +497,8 @@ section[id]{scroll-margin-top:84px}
   <div class="wrap hero-grid">
     <div>
       <span class="badge"><svg class="ico" style="width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><path d="m8.6 12.2 2.4 2.4 4.5-4.8"/></svg>Empresa instaladora autorizada · Reg. Industrial 207876</span>
-      <h1>Tu instalador eléctrico <em>de confianza</em> en Madrid</h1>
-      <p class="lead">Instalaciones eléctricas, boletines CIE, control de acceso, videovigilancia, videoporteros y puntos de recarga. Hablas directamente con el técnico que hace el trabajo.</p>
+      <h1>Instalador eléctrico <em>autorizado</em> en Madrid</h1>
+      <p class="lead">Instalaciones eléctricas, boletines CIE, control de acceso, videovigilancia, videoporteros y puntos de recarga. Hablas con el técnico que hace el trabajo.</p>
       <div class="cta">
         <a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20quiero%20pedir%20un%20presupuesto" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto por WhatsApp</a>
         <a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20BY-TECH%20Servicios"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Pedir por email</a>
@@ -501,18 +514,18 @@ section[id]{scroll-margin-top:84px}
     <div class="gallery" role="region" aria-roledescription="carrusel" aria-label="Últimas instalaciones">
       <div class="g-head">
         <span class="g-title">Últimas instalaciones</span>
-        <div class="g-nav"><button type="button" class="g-btn" data-g="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button type="button" class="g-btn" data-g="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>
+        <div class="g-nav"><button type="button" class="g-btn" id="g-pause" aria-label="Pausar el carrusel" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true" class="i-pause"><path d="M9 6v12M15 6v12"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="i-play" hidden><path d="M8 5.5v13l10.5-6.5z"/></svg></button><button type="button" class="g-btn" data-g="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button><button type="button" class="g-btn" data-g="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div>
       </div>
       <div class="g-track" id="g-track" tabindex="0">
         <!-- Para añadir un trabajo, copia esta línea arriba del todo de la lista y cambia la foto y los textos:
         <figure class="slide"><img src="trabajos/nombre-de-la-foto.jpg" alt="Descripción del trabajo" loading="lazy"><figcaption><b>Título del trabajo</b><span>Localidad · mes año</span></figcaption></figure>
         -->
-        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Instalaciones eléctricas</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
-        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="1.8"/><path d="M3.2 8.6h17.6"/><rect x="5.6" y="11" width="2.4" height="5.6" rx=".5"/><rect x="9.6" y="11" width="2.4" height="5.6" rx=".5"/><rect x="13.6" y="11" width="2.4" height="5.6" rx=".5"/><path d="M17.6 11v5.6"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Cuadros eléctricos</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
-        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Control de acceso</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
-        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Videovigilancia</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
-        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/><path d="M2.4 21.2h12.2"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Puntos de recarga</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
-        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="2.5" width="13" height="19" rx="1.6"/><rect x="7.8" y="5" width="8.4" height="7" rx=".6"/><circle cx="12" cy="7.6" r="1.3"/><path d="M9.8 11.3a2.4 2.4 0 0 1 4.4 0M8.2 16.6c.7-.8 1.8-.8 2.5 0"/><circle cx="15" cy="16.5" r="1"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Videoporteros</b><span>Fotos de trabajos reales muy pronto</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Instalaciones eléctricas</b><span>Pronto subo fotos de trabajos reales</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="1.8"/><path d="M3.2 8.6h17.6"/><rect x="5.6" y="11" width="2.4" height="5.6" rx=".5"/><rect x="9.6" y="11" width="2.4" height="5.6" rx=".5"/><rect x="13.6" y="11" width="2.4" height="5.6" rx=".5"/><path d="M17.6 11v5.6"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Cuadros eléctricos</b><span>Pronto subo fotos de trabajos reales</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="2.5" width="11" height="19" rx="1.8"/><rect x="5" y="4.6" width="7" height="3.2" rx=".6"/><path d="M6 11h.01M8.5 11h.01M11 11h.01M6 13.6h.01M8.5 13.6h.01M11 13.6h.01M6 16.2h.01M8.5 16.2h.01"/><path d="M17.5 7.5a3.6 3.6 0 0 1 0 5M19.8 5.6a6.3 6.3 0 0 1 0 8.8"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Control de acceso</b><span>Pronto subo fotos de trabajos reales</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Videovigilancia</b><span>Pronto subo fotos de trabajos reales</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/><path d="M2.4 21.2h12.2"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Puntos de recarga</b><span>Pronto subo fotos de trabajos reales</span></figcaption></figure>
+        <figure class="slide ph"><div class="ph-art"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="2.5" width="13" height="19" rx="1.6"/><rect x="7.8" y="5" width="8.4" height="7" rx=".6"/><circle cx="12" cy="7.6" r="1.3"/><path d="M9.8 11.3a2.4 2.4 0 0 1 4.4 0M8.2 16.6c.7-.8 1.8-.8 2.5 0"/><circle cx="15" cy="16.5" r="1"/></svg></div><span class="chip">Próximamente</span><figcaption><b>Videoporteros</b><span>Pronto subo fotos de trabajos reales</span></figcaption></figure>
       </div>
       <div class="g-dots" id="g-dots"></div>
     </div>
@@ -565,14 +578,14 @@ section[id]{scroll-margin-top:84px}
 <section class="band alt">
   <div class="wrap">
     <div class="label">Por qué elegirme</div>
-    <h2 class="h2">Sin intermediarios y sin sorpresas</h2>
+    <h2 class="h2">Te atiende el mismo técnico de principio a fin</h2>
     <div class="adv">
-      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11.5 3.5 15l5 5L12 16.5M17 12.5l3.5-3.5-5-5L12 7.5"/><path d="m8.5 13.5 4.5-4.5 2.5 2.5-4.5 4.5z"/></svg><h3>Trato directo</h3><p>Hablas conmigo, el técnico que hará tu instalación. Sin centralitas ni comerciales.</p></div>
-      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14.5 2.5V7H19"/><path d="M8.5 13h7M8.5 17h4.5"/></svg><h3>Presupuesto sin compromiso</h3><p>Presupuesto detallado por escrito antes de empezar, sin costes ocultos.</p></div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11.5 3.5 15l5 5L12 16.5M17 12.5l3.5-3.5-5-5L12 7.5"/><path d="m8.5 13.5 4.5-4.5 2.5 2.5-4.5 4.5z"/></svg><h3>Trato directo</h3><p>Hablas conmigo, que soy el técnico que hará tu instalación.</p></div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z"/><path d="M14.5 2.5V7H19"/><path d="M8.5 13h7M8.5 17h4.5"/></svg><h3>Presupuesto por escrito</h3><p>Antes de empezar te doy el presupuesto por escrito, con cada partida y el IVA.</p></div>
       <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><path d="m8.6 12.2 2.4 2.4 4.5-4.8"/></svg><h3>Empresa autorizada</h3><p>Inscrita en el Registro Industrial de la Comunidad de Madrid con el nº 207876, categoría Especialista.</p></div>
       <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><h3>Respuesta en 24 horas</h3><p>Te contesto en menos de 24 horas laborables y te doy cita lo antes posible.</p></div>
-      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M12 12v6.5a2 2 0 0 0 4 0"/><path d="M3 12c1.5-1.3 3-1.3 4.5 0 1.5-1.3 3-1.3 4.5 0 1.5-1.3 3-1.3 4.5 0 1.5-1.3 3-1.3 4.5 0"/></svg><h3>Garantía y seguro</h3><p>Un año de garantía en mano de obra y seguro de responsabilidad civil en vigor.</p></div>
-      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.6-7-12a7 7 0 0 1 14 0c0 5.4-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.4"/></svg><h3>Madrid y alrededores</h3><p>Trabajo en toda la zona, especialmente en el sur: Valdemoro, Pinto, Getafe, Parla y Aranjuez.</p></div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M12 12v6.5a2 2 0 0 0 4 0"/><path d="M3 12c1.5-1.3 3-1.3 4.5 0 1.5-1.3 3-1.3 4.5 0 1.5-1.3 3-1.3 4.5 0 1.5-1.3 3-1.3 4.5 0"/></svg><h3>Garantía y seguro</h3><p>La mano de obra tiene un año de garantía y tengo seguro de responsabilidad civil en vigor.</p></div>
+      <div><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.6-7-12a7 7 0 0 1 14 0c0 5.4-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.4"/></svg><h3>Madrid y alrededores</h3><p>Trabajo en toda la Comunidad de Madrid, sobre todo en el sur: Valdemoro, Pinto, Getafe, Parla y Aranjuez.</p></div>
     </div>
   </div>
 </section>
@@ -580,11 +593,11 @@ section[id]{scroll-margin-top:84px}
 <section class="band">
   <div class="wrap" style="text-align:center">
     <div class="label">Cómo trabajo</div>
-    <h2 class="h2">Un proceso sencillo</h2>
+    <h2 class="h2">De tu mensaje al certificado, en cuatro pasos</h2>
     <div class="steps">
       <div class="step"><h3>Escríbeme</h3><p>Cuéntame por WhatsApp o email qué necesitas. Si puedes, manda una foto.</p></div>
-      <div class="step"><h3>Presupuesto</h3><p>Te envío el presupuesto detallado y sin compromiso en menos de 24 horas.</p></div>
-      <div class="step"><h3>Instalación</h3><p>Hago el trabajo en la fecha acordada, de forma limpia y ordenada.</p></div>
+      <div class="step"><h3>Presupuesto</h3><p>En menos de 24 horas te envío el presupuesto detallado.</p></div>
+      <div class="step"><h3>Instalación</h3><p>Hago el trabajo el día acordado y dejo la zona recogida.</p></div>
       <div class="step"><h3>Legalización</h3><p>Si hace falta, tramito el certificado ante Industria Madrid.</p></div>
     </div>
   </div>
@@ -595,18 +608,19 @@ section[id]{scroll-margin-top:84px}
     <div>
       <div class="label">Contacto</div>
       <h2 class="h2">¿Necesitas un presupuesto?</h2>
-      <p class="sub">Cuéntame qué necesitas y te respondo en menos de 24 horas con un presupuesto detallado y sin compromiso.</p>
+      <p class="sub">Cuéntame qué necesitas y en menos de 24 horas te mando el presupuesto, gratis.</p>
       <div class="datos">
-        <div class="dato"><div class="ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg></div><div class="grow"><small>Teléfono y WhatsApp</small><b id="tel">639 559 683</b></div><button class="copy" type="button" data-copy="639559683" data-target="tel">Copiar</button></div>
+        <div class="dato"><div class="ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg></div><div class="grow"><small>Teléfono y WhatsApp</small><b id="tel"><a href="tel:+34639559683" style="color:inherit;text-decoration:none">639 559 683</a></b></div><button class="copy" type="button" data-copy="639559683" data-target="tel">Copiar</button></div>
         <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg></div><div class="grow"><small>Email</small><b id="mail"><a href="mailto:info@bytechservicios.es" style="color:inherit;text-decoration:none">info@bytechservicios.es</a></b></div><button class="copy" type="button" data-copy="info@bytechservicios.es" data-target="mail">Copiar</button></div>
         <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.6-7-12a7 7 0 0 1 14 0c0 5.4-7 12-7 12z"/><circle cx="12" cy="9.5" r="2.4"/></svg></div><div class="grow"><small>Zona de trabajo</small><b>Madrid y alrededores</b></div></div>
         <div class="dato"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><path d="m8.6 12.2 2.4 2.4 4.5-4.8"/></svg></div><div class="grow"><small>Empresa instaladora autorizada</small><b>Reg. Industrial nº 207876</b></div></div>
       </div>
     </div>
-    <form id="presupuesto" action="enviar.php" method="post">
+    <form id="presupuesto" action="enviar.php" method="post" novalidate>
       <h3>Pedir presupuesto</h3>
-      <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" maxlength="80" required></div>
-      <div class="field"><label for="f-contacto">Teléfono o email</label><input id="f-contacto" name="contacto" type="text" autocomplete="tel" placeholder="Para poder responderte" maxlength="120" required></div>
+      <p class="form-req">Los campos con <span class="req" aria-hidden="true">*</span> son obligatorios.</p>
+      <div class="field"><label for="f-nombre">Nombre<span class="req" aria-hidden="true">*</span></label><input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" maxlength="80" required aria-describedby="e-nombre"><p class="field-err" id="e-nombre" hidden></p></div>
+      <div class="field"><label for="f-contacto">Teléfono o email<span class="req" aria-hidden="true">*</span></label><input id="f-contacto" name="contacto" type="text" autocomplete="tel" placeholder="Para poder responderte" maxlength="120" required aria-describedby="e-contacto"><p class="field-err" id="e-contacto" hidden></p></div>
       <div class="field"><label for="f-zona">Localidad</label><input id="f-zona" name="zona" type="text" placeholder="Por ejemplo, Valdemoro" maxlength="80"></div>
       <div class="field"><label for="f-servicio">Servicio</label>
         <select id="f-servicio" name="servicio">
@@ -622,10 +636,11 @@ section[id]{scroll-margin-top:84px}
           <option>Redes y cableado</option>
           <option>Otro</option>
         </select></div>
-      <div class="field"><label for="f-msg">Qué necesitas</label><textarea id="f-msg" name="mensaje" placeholder="Cuéntame brevemente el trabajo" maxlength="3000" required></textarea></div>
+      <div class="field"><label for="f-msg">Qué necesitas<span class="req" aria-hidden="true">*</span></label><textarea id="f-msg" name="mensaje" placeholder="Qué trabajo necesitas y dónde" maxlength="3000" required aria-describedby="e-msg"></textarea><p class="field-err" id="e-msg" hidden></p></div>
       <div class="hp" aria-hidden="true"><label for="f-web">No rellenar este campo</label><input id="f-web" name="web" type="text" tabindex="-1" autocomplete="off"></div>
       <input type="hidden" name="t" id="f-t" value="0">
-      <label class="chk" for="f-priv"><input id="f-priv" name="privacidad" type="checkbox" value="1" required><span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+      <label class="chk" for="f-priv"><input id="f-priv" name="privacidad" type="checkbox" value="1" required aria-describedby="e-priv"><span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</span></label>
+      <p class="field-err" id="e-priv" hidden></p>
       <div class="send-row">
         <button id="send-form" class="btn btn-main" type="submit"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 10 14"/><path d="m21 3-7 18-4-7-7-4z"/></svg>Enviar solicitud</button>
         <a id="send" class="btn btn-wa" href="https://wa.me/34639559683" target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Enviar por WhatsApp</a>
@@ -645,7 +660,7 @@ section[id]{scroll-margin-top:84px}
         <p>Empresa instaladora eléctrica autorizada en baja tensión, categoría Especialista. Reg. Industrial nº 207876.</p>
       </div>
       <div><h4>Zona</h4><ul><li>Madrid y alrededores</li></ul></div>
-      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/34639559683" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></li><li><a href="mailto:info@bytechservicios.es">info@bytechservicios.es</a></li><li><a href="#contacto">Pedir presupuesto</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="tel:+34639559683">Llamar al 639 559 683</a></li><li><a href="https://wa.me/34639559683" target="_blank" rel="noopener">Escríbeme por WhatsApp</a></li><li><a href="mailto:info@bytechservicios.es">info@bytechservicios.es</a></li><li><a href="#contacto">Pedir presupuesto</a></li></ul></div>
     </div>
     <div class="legal"><span>© 2026 BY-TECH Servicios · Empresa instaladora autorizada en la Comunidad de Madrid · <span class="nw">Reg. Industrial nº 207876</span></span><nav class="legal-links" aria-label="Información legal"><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Política de privacidad</a><a href="politica-cookies.html">Cookies</a></nav></div>
   </div>
@@ -670,18 +685,47 @@ section[id]{scroll-margin-top:84px}
     send.href='https://wa.me/34639559683?text='+encodeURIComponent(parts.join('\n'));
   }
   f.addEventListener('input',build); f.addEventListener('change',build);
+
+  // Validación: el error sale debajo de cada campo, al salir del campo o al enviar
+  var REGLAS={
+    'f-nombre':function(v){return v?'':'Escribe tu nombre.';},
+    'f-contacto':function(v){ if(!v) return 'Escribe un teléfono o un email para que pueda responderte.';
+      var tel=v.replace(/\D/g,'').length>=9, mail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      return (tel||mail)?'':'Revisa el teléfono o el email: no parece completo.'; },
+    'f-msg':function(v){return v?'':'Cuéntame qué trabajo necesitas.';},
+    'f-priv':function(v,el){return el.checked?'':'Marca la casilla para aceptar la política de privacidad.';}
+  };
+  var ERR={'f-nombre':'e-nombre','f-contacto':'e-contacto','f-msg':'e-msg','f-priv':'e-priv'};
+  function check(id,mostrar){
+    var el=document.getElementById(id), msg=REGLAS[id]((el.value||'').trim(),el), p=document.getElementById(ERR[id]);
+    if(msg && mostrar){ p.textContent=msg; p.hidden=false; el.setAttribute('aria-invalid','true'); }
+    else if(!msg){ p.textContent=''; p.hidden=true; el.removeAttribute('aria-invalid'); }
+    return !msg;
+  }
+  function validar(enfocar){
+    var primero=null;
+    Object.keys(REGLAS).forEach(function(id){ if(!check(id,true) && !primero) primero=document.getElementById(id); });
+    if(primero && enfocar) primero.focus();
+    return !primero;
+  }
+  function limpiar(){ Object.keys(ERR).forEach(function(id){ var p=document.getElementById(ERR[id]); p.hidden=true; p.textContent=''; document.getElementById(id).removeAttribute('aria-invalid'); }); }
+  Object.keys(REGLAS).forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener('blur',function(){ if((el.value||'').trim()||el.getAttribute('aria-invalid')) check(id,true); });
+    el.addEventListener(el.type==='checkbox'?'change':'input',function(){ if(el.getAttribute('aria-invalid')) check(id,true); });
+  });
   // Envío directo del formulario a info@bytechservicios.es
   var t0=Date.now(), st=document.getElementById('f-status'), sb=document.getElementById('send-form');
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    if(!f.checkValidity()){ f.reportValidity(); return; }
+    if(!validar(true)) return;
     document.getElementById('f-t').value=String(Math.round((Date.now()-t0)/1000));
     sb.disabled=true; st.className='form-status'; st.textContent='Enviando…';
     fetch(f.getAttribute('action'),{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
       .then(function(r){return r.json();})
       .then(function(j){
         st.className='form-status '+(j.ok?'ok':'err'); st.textContent=j.mensaje;
-        if(j.ok){ f.reset(); t0=Date.now(); build(); }
+        if(j.ok){ f.reset(); limpiar(); t0=Date.now(); build(); }
       })
       .catch(function(){ st.className='form-status err'; st.textContent='No se ha podido enviar. Escríbeme por WhatsApp o a info@bytechservicios.es.'; })
       .then(function(){ sb.disabled=false; });
@@ -708,15 +752,16 @@ section[id]{scroll-margin-top:84px}
   // Carrusel de instalaciones: pasa solo, se puede arrastrar y tiene botones
   (function(){
     var track=document.getElementById('g-track'); if(!track) return;
-    var slides=track.querySelectorAll('.slide'), dotsBox=document.getElementById('g-dots'), dots=[], i=0, timer=null, paused=false;
+    var slides=track.querySelectorAll('.slide'), dotsBox=document.getElementById('g-dots'), dots=[], i=0, timer=null, paused=false, parado=false, pb=document.getElementById('g-pause');
     var still=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     slides.forEach(function(_,k){var d=document.createElement('button'); d.type='button'; d.className='g-dot'; d.setAttribute('aria-label','Ir a la foto '+(k+1)); d.addEventListener('click',function(){go(k);restart();}); dotsBox.appendChild(d); dots.push(d);});
     function mark(){dots.forEach(function(d,k){d.setAttribute('aria-current',k===i?'true':'false');});}
     function go(k){i=(k+slides.length)%slides.length; track.scrollTo({left:i*track.clientWidth,behavior:still?'auto':'smooth'}); mark();}
-    function tick(){if(!paused && document.visibilityState==='visible') go(i+1);}
+    function tick(){if(!paused && !parado && document.visibilityState==='visible') go(i+1);}
     function restart(){clearInterval(timer); if(!still) timer=setInterval(tick,4500);}
     track.addEventListener('scroll',function(){var k=Math.round(track.scrollLeft/Math.max(1,track.clientWidth)); if(k!==i){i=k; mark();}},{passive:true});
-    document.querySelectorAll('.g-btn').forEach(function(b){b.addEventListener('click',function(){go(i+parseInt(b.getAttribute('data-g'),10)); restart();});});
+    document.querySelectorAll('.g-btn[data-g]').forEach(function(b){b.addEventListener('click',function(){go(i+parseInt(b.getAttribute('data-g'),10)); restart();});});
+    if(still){ pb.hidden=true; } else pb.addEventListener('click',function(){ parado=!parado; pb.setAttribute('aria-pressed',parado?'true':'false'); pb.setAttribute('aria-label',parado?'Reanudar el carrusel':'Pausar el carrusel'); pb.querySelector('.i-pause').hidden=parado; pb.querySelector('.i-play').hidden=!parado; });
     ['mouseenter','focusin','touchstart'].forEach(function(ev){track.parentNode.addEventListener(ev,function(){paused=true;},{passive:true});});
     ['mouseleave','focusout','touchend'].forEach(function(ev){track.parentNode.addEventListener(ev,function(){paused=false;},{passive:true});});
     track.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){go(i+1);restart();} if(e.key==='ArrowLeft'){go(i-1);restart();}});
