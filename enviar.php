@@ -53,6 +53,7 @@ $contacto  = campo('contacto', 120);
 $localidad = campo('zona', 80);
 $servicio  = campo('servicio', 80);
 $mensaje   = campo('mensaje', 3000, false);
+$origen    = campo('origen', 300);
 
 if ($nombre === '' || $contacto === '' || $mensaje === '') {
     responder(false, 'Rellena tu nombre, un teléfono o email y qué necesitas.', $quiereJson);
@@ -68,6 +69,7 @@ $cuerpo = "Nueva solicitud desde bytechservicios.es\n\n"
         . 'Localidad: ' . ($localidad !== '' ? $localidad : '-') . "\n"
         . 'Servicio: ' . ($servicio !== '' ? $servicio : '-') . "\n\n"
         . "Mensaje:\n{$mensaje}\n\n"
+        . 'Origen: ' . ($origen !== '' ? $origen : '-') . "\n"
         . "---\nEnviado el " . date('d/m/Y \a \l\a\s H:i') . ". El cliente aceptó la política de privacidad.\n";
 
 $cabeceras = [
