@@ -986,7 +986,7 @@ section[id]{scroll-margin-top:84px}
   var root=document.getElementById('simulador'); if(!root) return;
 
   /* Precios con IVA incluido: [mínimo, máximo] */
-  var P={"boletin":{"vivienda":{"alta":[150,240],"potencia":[150,240],"titular":[120,200],"reforma":[200,320]},"local":[250,450],"nose":[0,180],"antigua":[150,380],"urgente":[40,70]},"instalacion":{"fijo":[400,600],"m2":[23,38],"elevada":[350,700],"rozas_m2":[8,14],"cuadro_basico":[380.98,477.78],"cuadro_ampliado":[533.47,630.27],"sobretensiones":[232.3,256.5],"boletin_cuadro":[100,180],"minimo":[40,60],"enchufe":[55.87,80.07],"luz":[55.87,80.07],"circuito":[152.41,200.81],"averia":[60.5,84.7],"hora":[48.4,48.4],"urgente":[30,60]},"recarga":{"casa":[545.06,666.06],"casa_m":15,"comunidad":[687.91,881.51],"comunidad_m":20,"metro":[15.5,20.34],"metro_tri":[20.65,25.49],"largo_m":40,"seccion10":[1,1],"trifasica":[100,200],"cargador_mono":[922.19,1209.78],"cargador_tri":[984.22,1368.79],"potencia":[100,180]},"camaras":{"grabador":[601.64,650.04],"grabador16":[820.87,869.27],"interior":[119.28,143.48],"exterior":[211.44,235.64]},"videoportero":{"sustituir":[372.99,421.39],"nuevo":[503.67,600.47],"monitor":[90,160],"abrepuertas":[60,110],"comunidad":[600,950],"vivienda":[75,120],"placa":[350,600]},"acceso":{"puerta":[403.87,452.27],"tarjeta":[20.33,32.43],"huella":[60,120],"facial":[180,320],"iman":[60,120],"movil":[60,120]},"presencia":{"terminal":[250,450],"software":[80,150]}};
+  var P={"boletin":{"vivienda":{"alta":[172.5,276],"potencia":[172.5,276],"titular":[138,230],"reforma":[230,368]},"local":[287.5,517.5],"nose":[0,207],"antigua":[172.5,437],"urgente":[46,80.5]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[535.24,646.56],"cuadro_ampliado":[759.16,870.48],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[626.82,765.97],"casa_m":15,"comunidad":[791.1,1013.74],"comunidad_m":20,"metro":[17.83,23.39],"metro_tri":[23.75,29.32],"largo_m":40,"seccion10":[1.15,1.15],"trifasica":[115,230],"cargador_mono":[1020.75,1192.49],"cargador_tri":[1089.41,1349.23],"potencia":[115,207]},"camaras":{"grabador":[737.42,793.08],"grabador16":[989.53,1045.19],"interior":[137.17,165],"exterior":[243.15,270.98]},"videoportero":{"sustituir":[428.94,484.6],"nuevo":[579.22,690.54],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]}};
 
   /* ---------- utilidades ---------- */
   function eur(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
@@ -1044,7 +1044,6 @@ section[id]{scroll-margin-top:84px}
           ['basico','Hasta 6 circuitos','Piso pequeño o mediano'],
           ['ampliado','De 7 a 12 circuitos','Vivienda grande o con muchos aparatos']]},
         {id:'cext',t:'Extras',type:'chk',show:function(a){return a.tipo==='cuadro';},o:[
-          ['sobretensiones','Protector contra sobretensiones',plus(P.instalacion.sobretensiones)],
           ['boletin','Boletín (CIE) después del cambio',plus(P.instalacion.boletin_cuadro)]]},
         {id:'enchufes',t:'Enchufes nuevos',type:'num',d:2,min:0,max:40,show:function(a){return a.tipo==='puntos';}},
         {id:'luces',t:'Puntos de luz nuevos',type:'num',d:0,min:0,max:40,show:function(a){return a.tipo==='puntos';}},
@@ -1055,15 +1054,16 @@ section[id]{scroll-margin-top:84px}
         var I=P.instalacion, L=[], inc=[], n=[], form='Instalación eléctrica';
         if(a.tipo==='completa'){
           L.push(['Instalación completa de '+a.m2+' m²',add(I.fijo,mul(I.m2,a.m2))]);
+          L.push(['Protección contra sobretensiones permanentes y transitorias',I.proteccion_st]);
           if(a.elec==='elevada') L.push(['Electrificación elevada (más circuitos)',I.elevada]);
           if(a.obra==='habitada') L.push(['Rozas y tapado de paredes',mul(I.rozas_m2,a.m2)]);
-          inc=['Cuadro nuevo con todas las protecciones','Cableado, cajas y mecanismos','Boletín (CIE) y legalización'];
+          inc=['Cuadro nuevo con diferenciales tipo A','Protección contra sobretensiones permanentes y transitorias','Cableado, cajas y mecanismos','Boletín (CIE) y legalización'];
           n.push('No incluye pintura ni lámparas.');
         } else if(a.tipo==='cuadro'){
           L.push(['Cambio de cuadro ('+(a.cuadro==='basico'?'hasta 6':'7 a 12')+' circuitos)',a.cuadro==='basico'?I.cuadro_basico:I.cuadro_ampliado]);
-          if(a.cext.sobretensiones) L.push(['Protector contra sobretensiones',I.sobretensiones]);
+          L.push(['Protección contra sobretensiones permanentes y transitorias',I.proteccion_st]);
           if(a.cext.boletin) L.push(['Boletín (CIE)',I.boletin_cuadro]);
-          inc=['Cuadro, protecciones y montaje','Comprobación de diferenciales y toma de tierra'];
+          inc=['Cuadro y protecciones con diferenciales tipo A, con montaje','Protección contra sobretensiones permanentes y transitorias','Comprobación de diferenciales y toma de tierra'];
           form='Cuadro eléctrico o avería';
         } else if(a.tipo==='puntos'){
           L.push(['Desplazamiento y puesta en marcha',I.minimo]);
