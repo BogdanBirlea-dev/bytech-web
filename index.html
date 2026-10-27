@@ -986,7 +986,7 @@ section[id]{scroll-margin-top:84px}
   var root=document.getElementById('simulador'); if(!root) return;
 
   /* Precios con IVA incluido: [mínimo, máximo] */
-  var P={"boletin":{"vivienda":{"alta":[172.5,276],"potencia":[172.5,276],"titular":[138,230],"reforma":[230,368]},"local":[287.5,517.5],"nose":[0,207],"antigua":[172.5,437],"urgente":[46,80.5]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[535.24,646.56],"cuadro_ampliado":[759.16,870.48],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[626.82,765.97],"casa_m":15,"comunidad":[791.1,1013.74],"comunidad_m":20,"metro":[17.83,23.39],"metro_tri":[23.75,29.32],"largo_m":40,"seccion10":[1.15,1.15],"trifasica":[115,230],"cargador_mono":[1020.75,1192.49],"cargador_tri":[1089.41,1349.23],"potencia":[115,207]},"camaras":{"grabador":[737.42,793.08],"grabador16":[989.53,1045.19],"interior":[137.17,165],"exterior":[243.15,270.98]},"videoportero":{"sustituir":[428.94,484.6],"nuevo":[579.22,690.54],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]}};
+  var P={"desp":[41.74,41.74],"boletin":{"vivienda":{"alta":[172.5,276],"potencia":[172.5,276],"titular":[138,230],"reforma":[230,368]},"local":[287.5,517.5],"nose":[0,207],"antigua":[172.5,437],"urgente":[46,80.5]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[535.24,646.56],"cuadro_ampliado":[759.16,870.48],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[626.82,765.97],"casa_m":15,"comunidad":[791.1,1013.74],"comunidad_m":20,"metro":[17.83,23.39],"metro_tri":[23.75,29.32],"largo_m":40,"seccion10":[1.15,1.15],"trifasica":[115,230],"cargador_mono":[1020.75,1192.49],"cargador_tri":[1089.41,1349.23],"potencia":[115,207]},"camaras":{"grabador":[737.42,793.08],"grabador16":[989.53,1045.19],"interior":[137.17,165],"exterior":[243.15,270.98]},"videoportero":{"sustituir":[428.94,484.6],"nuevo":[579.22,690.54],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]}};
 
   /* ---------- utilidades ---------- */
   function eur(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
@@ -996,6 +996,7 @@ section[id]{scroll-margin-top:84px}
   function add(a,b){return [a[0]+b[0],a[1]+b[1]];}
   function plus(p){return '+'+rng(p);}
   function pl(n,uno,varios){return n+' '+(n===1?uno:varios);}
+  function desp(d){var x=P.desp[0]; return [Math.ceil(x*d[0]/5)*5, Math.ceil(x*d[1]/5)*5];}
 
   /* ---------- preguntas y cálculo de cada servicio ---------- */
   var SERV={
@@ -1022,7 +1023,7 @@ section[id]{scroll-margin-top:84px}
         if(a.estado==='antigua') L.push(['Adecuación: diferencial y toma de tierra',B.antigua]);
         if(a.ext.urgente) L.push(['Servicio urgente (48\u00a0h)',B.urgente]);
         if(a.estado!=='bien') n.push('Antes de hacer ningún ajuste te digo qué hace falta y cuánto cuesta.');
-        return {L:L,inc:['Revisión de la instalación','Certificado de instalación (CIE)','Tramitación ante Industria (Comunidad de Madrid)'],n:n,form:'Boletín eléctrico (CIE)'};
+        return {L:L,inc:['Revisión de la instalación','Certificado de instalación (CIE)','Tramitación ante Industria (Comunidad de Madrid)'],n:n,form:'Boletín eléctrico (CIE)',dias:[1,1]};
       }
     },
     instalacion:{
@@ -1051,18 +1052,21 @@ section[id]{scroll-margin-top:84px}
         {id:'aext',t:'Extras',type:'chk',show:function(a){return a.tipo==='averia';},o:[['urgente','Urgente (en el mismo día)',plus(P.instalacion.urgente)]]}
       ],
       calc:function(a){
-        var I=P.instalacion, L=[], inc=[], n=[], form='Instalación eléctrica';
+        var I=P.instalacion, L=[], inc=[], n=[], form='Instalación eléctrica', dias=null;
         if(a.tipo==='completa'){
           L.push(['Instalación completa de '+a.m2+' m²',add(I.fijo,mul(I.m2,a.m2))]);
           L.push(['Protección contra sobretensiones permanentes y transitorias',I.proteccion_st]);
           if(a.elec==='elevada') L.push(['Electrificación elevada (más circuitos)',I.elevada]);
           if(a.obra==='habitada') L.push(['Rozas y tapado de paredes',mul(I.rozas_m2,a.m2)]);
+          var ex=(a.elec==='elevada'?1:0);
+          dias=[Math.ceil(a.m2/16)+ex+(a.obra==='habitada'?Math.ceil(a.m2/40):0), Math.ceil(a.m2/11.5)+ex+(a.obra==='habitada'?Math.ceil(a.m2/27):0)];
           inc=['Cuadro nuevo con diferenciales tipo A','Protección contra sobretensiones permanentes y transitorias','Cableado, cajas y mecanismos','Boletín (CIE) y legalización'];
           n.push('No incluye pintura ni lámparas.');
         } else if(a.tipo==='cuadro'){
           L.push(['Cambio de cuadro ('+(a.cuadro==='basico'?'hasta 6':'7 a 12')+' circuitos)',a.cuadro==='basico'?I.cuadro_basico:I.cuadro_ampliado]);
           L.push(['Protección contra sobretensiones permanentes y transitorias',I.proteccion_st]);
           if(a.cext.boletin) L.push(['Boletín (CIE)',I.boletin_cuadro]);
+          dias=[1,1];
           inc=['Cuadro y protecciones con diferenciales tipo A, con montaje','Protección contra sobretensiones permanentes y transitorias','Comprobación de diferenciales y toma de tierra'];
           form='Cuadro eléctrico o avería';
         } else if(a.tipo==='puntos'){
@@ -1079,7 +1083,7 @@ section[id]{scroll-margin-top:84px}
           n.push('Cada hora más: '+eur(I.hora[0])+' €. Las piezas que haya que cambiar te las digo antes de ponerlas.');
           form='Cuadro eléctrico o avería';
         }
-        return {L:L,inc:inc,n:n,form:form};
+        return {L:L,inc:inc,n:n,form:form,dias:dias};
       }
     },
     recarga:{
@@ -1107,7 +1111,7 @@ section[id]{scroll-margin-top:84px}
         if(a.rext.potencia) L.push(['Trámite de aumento de potencia',R.potencia]);
         var inc=['Línea exclusiva para el cargador','Protecciones, también contra sobretensiones','Certificado ITC-BT-52 y tramitación'];
         if(!casa) inc.push('Documentación para comunicarlo a la comunidad');
-        return {L:L,inc:inc,n:['Te informo de las ayudas que haya disponibles.'],form:'Punto de recarga'};
+        return {L:L,inc:inc,n:['Te informo de las ayudas que haya disponibles.'],form:'Punto de recarga',dias:casa?[1,1]:[1,2]};
       }
     },
     seguridad:{
@@ -1145,12 +1149,14 @@ section[id]{scroll-margin-top:84px}
         {id:'pext',t:'Extras',type:'chk',dd:{software:true},show:function(a){return a.sub==='presencia';},o:[['software','Puesta en marcha del programa de fichaje',plus(P.presencia.software)]]}
       ],
       calc:function(a){
-        var L=[], inc=[], n=[], form='Videovigilancia';
+        var L=[], inc=[], n=[], form='Videovigilancia', dias=[1,1];
         if(a.sub==='camaras'){
           var C=P.camaras, tot=a.cint+a.cext;
           L.push(['Grabador con disco duro y configuración',tot>8?C.grabador16:C.grabador]);
           if(a.cint) L.push([pl(a.cint,'cámara interior','cámaras interiores'),mul(C.interior,a.cint)]);
           if(a.cext) L.push([pl(a.cext,'cámara exterior','cámaras exteriores'),mul(C.exterior,a.cext)]);
+          var hm=(tot>8?2:1)+a.cint+1.5*a.cext, hM=(tot>8?3:2)+1.5*a.cint+2*a.cext;
+          dias=[Math.max(1,Math.ceil(hm/8)),Math.max(1,Math.ceil(hM/8))];
           if(!tot) n.push('Añade al menos una cámara.');
           inc=['Cámaras IP de buena resolución','Cableado y montaje','Acceso desde tu móvil'];
           if(a.uso==='negocio') inc.push('Cartel de zona videovigilada');
@@ -1165,6 +1171,7 @@ section[id]{scroll-margin-top:84px}
             L.push(['Placa de calle, fuente y puesta en marcha',V.comunidad]);
             L.push([a.viv+' viviendas (monitor y conexión)',mul(V.vivienda,a.viv)]);
             if(a.placas>1) L.push([pl(a.placas-1,'acceso más','accesos más'),mul(V.placa,a.placas-1)]);
+            dias=[Math.max(1,Math.ceil(a.viv/20)),Math.max(1,Math.ceil(a.viv/10))];
             inc=['Placa de calle y monitores','Montaje y conexión en cada vivienda','Puesta en marcha'];
             n.push('Si hay que cambiar el cableado del edificio, te lo indico antes.');
           }
@@ -1175,6 +1182,7 @@ section[id]{scroll-margin-top:84px}
           L.push([pl(a.puertas,'puerta','puertas')+' con '+nom[a.ident],mul(per,a.puertas)]);
           if(a.cerr==='iman') L.push(['Cerradura electromagnética',mul(A.iman,a.puertas)]);
           if(a.aext.movil) L.push(['Gestión desde el móvil',mul(A.movil,a.puertas)]);
+          dias=[Math.max(1,Math.ceil(3*a.puertas/8)),Math.max(1,Math.ceil(4*a.puertas/8))];
           inc=['Lector y fuente de alimentación',a.cerr==='iman'?'Cerradura y pulsador de salida':'Abrepuertas y pulsador de salida','Configuración y alta de usuarios'];
         } else {
           var Pr=P.presencia; form='Control de presencia';
@@ -1183,7 +1191,7 @@ section[id]{scroll-margin-top:84px}
           inc=['Terminal de huella, tarjeta o facial','Montaje y conexión','Formación para usarlo'];
           n.push('Si el programa de fichaje tiene cuota mensual, no está incluida.');
         }
-        return {L:L,inc:inc,n:n,form:form};
+        return {L:L,inc:inc,n:n,form:form,dias:dias};
       }
     }
   };
@@ -1252,6 +1260,7 @@ section[id]{scroll-margin-top:84px}
     vis.forEach(function(e,i){ e.style.borderBottom=i===vis.length-1?'0':''; e.style.marginBottom=i===vis.length-1?'0':''; });
 
     var r=s.calc(a), tot=[0,0];
+    if(r.dias) r.L.push(['Desplazamiento ('+(r.dias[0]===r.dias[1]?r.dias[0]:r.dias[0]+'–'+r.dias[1])+(r.dias[1]>1?' días)':' día)'),desp(r.dias)]);
     r.L.forEach(function(l){ tot=add(tot,l[1]); });
     var T=rng(tot);
     document.getElementById('sim-svc').textContent=s.nombre;
