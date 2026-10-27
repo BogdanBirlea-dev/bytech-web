@@ -986,7 +986,7 @@ section[id]{scroll-margin-top:84px}
   var root=document.getElementById('simulador'); if(!root) return;
 
   /* Precios con IVA incluido: [mínimo, máximo] */
-  var P={"desp":[41.74,41.74],"boletin":{"vivienda":{"alta":[172.5,276],"potencia":[172.5,276],"titular":[138,230],"reforma":[230,368]},"local":[287.5,517.5],"nose":[0,207],"antigua":[172.5,437],"urgente":[46,80.5]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[535.24,646.56],"cuadro_ampliado":[759.16,870.48],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[626.82,765.97],"casa_m":15,"comunidad":[791.1,1013.74],"comunidad_m":20,"metro":[17.83,23.39],"metro_tri":[23.75,29.32],"largo_m":40,"seccion10":[1.15,1.15],"trifasica":[115,230],"cargador_mono":[1020.75,1192.49],"cargador_tri":[1089.41,1349.23],"potencia":[115,207]},"camaras":{"grabador":[737.42,793.08],"grabador16":[989.53,1045.19],"interior":[137.17,165],"exterior":[243.15,270.98]},"videoportero":{"sustituir":[428.94,484.6],"nuevo":[579.22,690.54],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]}};
+  var P={"ajuste":[41.74,41.74],"boletin":{"vivienda":{"alta":[172.5,276],"potencia":[172.5,276],"titular":[138,230],"reforma":[230,368]},"local":[287.5,517.5],"nose":[0,207],"antigua":[172.5,437],"urgente":[46,80.5]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[535.24,646.56],"cuadro_ampliado":[759.16,870.48],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[626.82,765.97],"casa_m":15,"comunidad":[791.1,1013.74],"comunidad_m":20,"metro":[17.83,23.39],"metro_tri":[23.75,29.32],"largo_m":40,"seccion10":[1.15,1.15],"trifasica":[115,230],"cargador_mono":[1020.75,1192.49],"cargador_tri":[1089.41,1349.23],"potencia":[115,207]},"camaras":{"grabador":[737.42,793.08],"grabador16":[989.53,1045.19],"interior":[137.17,165],"exterior":[243.15,270.98]},"videoportero":{"sustituir":[428.94,484.6],"nuevo":[579.22,690.54],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]}};
 
   /* ---------- utilidades ---------- */
   function eur(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
@@ -996,7 +996,6 @@ section[id]{scroll-margin-top:84px}
   function add(a,b){return [a[0]+b[0],a[1]+b[1]];}
   function plus(p){return '+'+rng(p);}
   function pl(n,uno,varios){return n+' '+(n===1?uno:varios);}
-  function desp(d){var x=P.desp[0]; return [Math.ceil(x*d[0]/5)*5, Math.ceil(x*d[1]/5)*5];}
 
   /* ---------- preguntas y cálculo de cada servicio ---------- */
   var SERV={
@@ -1070,16 +1069,16 @@ section[id]{scroll-margin-top:84px}
           inc=['Cuadro y protecciones con diferenciales tipo A, con montaje','Protección contra sobretensiones permanentes y transitorias','Comprobación de diferenciales y toma de tierra'];
           form='Cuadro eléctrico o avería';
         } else if(a.tipo==='puntos'){
-          L.push(['Desplazamiento y puesta en marcha',I.minimo]);
+          L.push(['Visita y puesta en marcha',I.minimo]);
           if(a.enchufes) L.push([pl(a.enchufes,'enchufe nuevo','enchufes nuevos'),mul(I.enchufe,a.enchufes)]);
           if(a.luces) L.push([pl(a.luces,'punto de luz','puntos de luz'),mul(I.luz,a.luces)]);
           if(a.circuitos) L.push([pl(a.circuitos,'circuito nuevo','circuitos nuevos'),mul(I.circuito,a.circuitos)]);
           if(!a.enchufes && !a.luces && !a.circuitos) n.push('Añade al menos un enchufe, punto de luz o circuito.');
           inc=['Material y mano de obra','Mecanismos de gama estándar'];
         } else {
-          L.push(['Desplazamiento, diagnóstico y primera hora',I.averia]);
+          L.push(['Diagnóstico y primera hora de trabajo',I.averia]);
           if(a.aext.urgente) L.push(['Servicio urgente',I.urgente]);
-          inc=['Desplazamiento','Localización de la avería','Primera hora de trabajo'];
+          inc=['Visita a domicilio','Localización de la avería','Primera hora de trabajo'];
           n.push('Cada hora más: '+eur(I.hora[0])+' €. Las piezas que haya que cambiar te las digo antes de ponerlas.');
           form='Cuadro eléctrico o avería';
         }
@@ -1260,7 +1259,7 @@ section[id]{scroll-margin-top:84px}
     vis.forEach(function(e,i){ e.style.borderBottom=i===vis.length-1?'0':''; e.style.marginBottom=i===vis.length-1?'0':''; });
 
     var r=s.calc(a), tot=[0,0];
-    if(r.dias) r.L.push(['Desplazamiento ('+(r.dias[0]===r.dias[1]?r.dias[0]:r.dias[0]+'–'+r.dias[1])+(r.dias[1]>1?' días)':' día)'),desp(r.dias)]);
+    if(r.dias && r.L.length) r.L[0]=[r.L[0][0], add(r.L[0][1], [P.ajuste[0]*r.dias[0], P.ajuste[1]*r.dias[1]])];
     r.L.forEach(function(l){ tot=add(tot,l[1]); });
     var T=rng(tot);
     document.getElementById('sim-svc').textContent=s.nombre;
