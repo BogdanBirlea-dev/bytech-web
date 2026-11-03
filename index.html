@@ -107,6 +107,13 @@
      "@type": "Service",
      "name": "Redes y cableado estructurado"
     }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Instalación y mantenimiento de barreras vehiculares y tornos de acceso"
+    }
    }
   ]
  }
@@ -468,9 +475,30 @@ section[id]{scroll-margin-top:84px}
   .faq-list details p{padding:0 16px 16px}
 }
 
+/* Apartado de mantenimiento */
+.mt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:40px}
+.mt-item{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0}
+.mt-item .ic{width:48px;height:48px;border-radius:10px;background:var(--panel-2);color:var(--cyan);display:flex;align-items:center;justify-content:center}
+.mt-item .ic .ico{width:26px;height:26px}
+.mt-item h3{font-size:18px;font-weight:700;margin-top:14px}
+.mt-item p{font-size:15px;color:var(--muted);margin-top:6px}
+.mt-plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.mt-plan{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;min-width:0}
+.mt-plan.pro{border-color:var(--cyan)}
+.mt-plan h3{font-size:22px;font-weight:800}
+.mt-plan .freq{color:var(--cyan);font-weight:700;margin-top:4px}
+.mt-plan ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}
+.mt-plan li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--muted)}
+.mt-plan li .ico{width:20px;height:20px;color:var(--cyan);margin-top:2px}
+.mt-tag{display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--bg);background:var(--cyan);border-radius:999px;padding:3px 10px;margin-bottom:10px}
+.mt-note{margin-top:22px;font-size:15px;color:var(--muted);max-width:72ch}
+.mt-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+@media (max-width:640px){.mt-grid,.mt-plans{grid-template-columns:minmax(0,1fr)}.mt-cta .btn{flex:1 1 100%;justify-content:center}}
+.mi-wide{grid-column:1/-1}
+
 /* ---- simulador de presupuesto ---- */
 .sim{background:var(--bg)}
-.sim-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:32px}
+.sim-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:32px}
 .sim-tab{display:flex;align-items:center;gap:12px;padding:16px;border-radius:10px;background:var(--panel);border:1.5px solid var(--line-2);color:var(--text);font:700 16px var(--f-body);text-align:left;cursor:pointer;transition:border-color .15s,background .15s;min-width:0}
 .sim-tab:hover{border-color:var(--line)}
 .sim-tab .ic{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex:none;background:var(--panel-2);color:var(--cyan)}
@@ -540,6 +568,7 @@ section[id]{scroll-margin-top:84px}
 .sim-peek{display:none}
 @media (max-width:960px){
   .sim-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sim-tab:last-child:nth-child(odd){grid-column:1/-1}
   .sim-body{grid-template-columns:minmax(0,1fr)}
   .sim-res{position:static}
   .sim-peek{display:flex;position:fixed;left:var(--gx);right:calc(var(--gxr) + 68px);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:65;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:14px;background:rgba(10,26,58,.96);backdrop-filter:blur(8px);border:1px solid var(--cyan);box-shadow:0 12px 30px rgba(0,0,0,.45);color:var(--text);text-decoration:none}
@@ -582,7 +611,6 @@ section[id]{scroll-margin-top:84px}
     <ul>
       <li><button type="button" class="nav-svc" data-panel="menu" aria-expanded="false" aria-controls="menu">Servicios<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
       <li><button type="button" class="nav-svc" data-panel="p-boletin" aria-expanded="false" aria-controls="p-boletin">Boletines<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
-      <li><button type="button" class="nav-svc" data-panel="p-recarga" aria-expanded="false" aria-controls="p-recarga">Puntos de recarga<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
       <li><a href="#simulador">Simulador</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -605,6 +633,7 @@ section[id]{scroll-margin-top:84px}
 <a class="mi" href="#contacto" data-svc="Videovigilancia"><span class="ic"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><g transform="rotate(-20 16 13)"><rect x="7.6" y="9" width="19" height="8.4" rx="2"/><rect x="3.6" y="9.9" width="4" height="6.6" rx="1.3"/><path d="M11 15.1H23.6"/></g><path d="M20.4 18.9V22.6H25.2"/><rect x="25.2" y="19.6" width="2.2" height="6.4" rx=".7"/></svg></span><span><b>Videovigilancia</b><span>Cámaras IP, grabadores y acceso desde el móvil.</span></span></a>
 <a class="mi" href="#contacto" data-svc="Videoportero"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5.5" y="2.5" width="13" height="19" rx="1.6"/><rect x="7.8" y="5" width="8.4" height="7" rx=".6"/><circle cx="12" cy="7.6" r="1.3"/><path d="M9.8 11.3a2.4 2.4 0 0 1 4.4 0M8.2 16.6c.7-.8 1.8-.8 2.5 0"/><circle cx="15" cy="16.5" r="1"/></svg></span><span><b>Videoporteros</b><span>Porteros automáticos y videoporteros, nuevos o en sustitución.</span></span></a>
 <a class="mi" href="#contacto" data-svc="Redes y cableado"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.6" y="2.6" width="6.8" height="5.2" rx=".8"/><rect x="2.6" y="16.2" width="6.8" height="5.2" rx=".8"/><rect x="14.6" y="16.2" width="6.8" height="5.2" rx=".8"/><path d="M12 7.8V12M6 16.2V12h12v4.2"/></svg></span><span><b>Redes y cableado</b><span>Cableado estructurado RJ45 y tomas de red.</span></span></a>
+<a class="mi mi-wide" href="#mantenimiento"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span><b>Mantenimiento</b><span>Revisiones y averías de barreras y tornos, cámaras, puntos de recarga y control de acceso.</span></span></a>
       </div>
       <div class="menu-foot"><span>Si buscas otro trabajo, cuéntamelo y te digo si puedo hacerlo.</span><div class="mf-btns"><a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20te%20escribo%20desde%20la%20web.%20Quiero%20pedir%20un%20presupuesto." target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>Escríbeme</a><a class="btn btn-mail" href="mailto:info@bytechservicios.es?subject=Presupuesto%20desde%20la%20web"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 6.5L20.5 6"/></svg>Email</a><a class="btn btn-ghost" href="#simulador"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="2.5" width="15" height="19" rx="2"/><rect x="7.5" y="5.5" width="9" height="4" rx=".6"/><path d="M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 16.8h.01M12 16.8h.01M15.5 16.8h.01"/></svg>Simular precio</a></div></div>
     </div>
@@ -708,7 +737,7 @@ section[id]{scroll-margin-top:84px}
       <a class="sc" href="#contacto" data-svc="Control de presencia"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2.4" width="14" height="19.2" rx="1.8"/><rect x="7.4" y="4.8" width="9.2" height="4.4" rx=".7"/><path d="M7.7 18.6v-1.2a4.3 4.3 0 0 1 8.6 0v1.2"/><path d="M9.7 19.4v-2a2.3 2.3 0 0 1 4.6 0v2"/><path d="M12 16.9v2.9"/></svg></span><h3>Control de presencia</h3><p>Terminales de fichaje para cumplir con el registro de jornada.</p><span class="go">Pedir presupuesto<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
       <a class="sc" href="#contacto" data-svc="Redes y cableado"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8.6" y="2.6" width="6.8" height="5.2" rx=".8"/><rect x="2.6" y="16.2" width="6.8" height="5.2" rx=".8"/><rect x="14.6" y="16.2" width="6.8" height="5.2" rx=".8"/><path d="M12 7.8V12M6 16.2V12h12v4.2"/></svg></span><h3>Redes y cableado</h3><p>Cableado estructurado RJ45 y tomas de red para casa u oficina.</p><span class="go">Pedir presupuesto<svg class="ico arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
-    <p class="svc-note">¿Buscas otro trabajo? <a href="https://wa.me/34639559683?text=Hola%2C%20te%20escribo%20desde%20la%20web.%20Quiero%20pedir%20un%20presupuesto." target="_blank" rel="noopener">Cuéntamelo por WhatsApp</a> y te digo si puedo hacerlo.</p>
+    <p class="svc-note">¿Buscas otro trabajo? <a href="https://wa.me/34639559683?text=Hola%2C%20te%20escribo%20desde%20la%20web.%20Quiero%20pedir%20un%20presupuesto." target="_blank" rel="noopener">Cuéntamelo por WhatsApp</a> y te digo si puedo hacerlo. ¿Tienes barreras o tornos en tu comunidad o empresa? Mira el <a href="#mantenimiento">mantenimiento de barreras y tornos</a>.</p>
   </div>
 </section>
 
@@ -721,6 +750,7 @@ section[id]{scroll-margin-top:84px}
       <button type="button" class="sim-tab" role="tab" id="st-instalacion" data-s="instalacion" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4.5 13.5H11L10 22l8.5-11.5H12z"/></svg></span><span>Instalación eléctrica</span></button>
       <button type="button" class="sim-tab" role="tab" id="st-recarga" data-s="recarga" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="2.8" width="10" height="18.4" rx="1.6"/><rect x="5.6" y="5" width="5.8" height="4" rx=".6"/><path d="m9.2 11.4-2 3.2h1.9l-.7 2.7 2.3-3.5H8.9z"/><path d="M13.5 8.5h2.6a1.6 1.6 0 0 1 1.6 1.6v6.3a1.6 1.6 0 0 0 3.2 0V8.2l-1.6-2"/></svg></span><span>Punto de recarga</span></button>
       <button type="button" class="sim-tab" role="tab" id="st-seguridad" data-s="seguridad" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 4.5 5.5v6c0 4.6 3.1 8.4 7.5 10 4.4-1.6 7.5-5.4 7.5-10v-6z"/><circle cx="12" cy="10.6" r="1.7"/><path d="M12 12.3v3.4"/></svg></span><span>Seguridad y accesos</span></button>
+      <button type="button" class="sim-tab" role="tab" id="st-mant" data-s="mant" aria-selected="false" aria-controls="sim-panel" tabindex="-1"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span>Mantenimiento</span></button>
     </div>
     <div class="sim-body" id="sim-panel" role="tabpanel" aria-labelledby="st-boletin">
       <div>
@@ -744,6 +774,32 @@ section[id]{scroll-margin-top:84px}
     </div>
   </div>
 </section>
+<section class="band alt" id="mantenimiento">
+  <div class="wrap">
+    <h2 class="h2">Mantenimiento de barreras y tornos</h2>
+    <p class="sub">Para comunidades de vecinos, locales y empresas. Reviso tus barreras vehiculares y tornos de acceso para que no fallen, y si algo falla, tienes prioridad.</p>
+    <div class="mt-grid">
+      <div class="mt-item"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="10" width="4.5" height="10.5" rx=".8"/><path d="M1.5 20.5h7"/><path d="M7 12.6 21.5 7.2"/><path d="m10.4 11.4.9-.4M14.2 10l.9-.3M18 8.6l.9-.3"/><circle cx="4.75" cy="13" r=".9"/></svg></span><h3>Barreras vehiculares</h3><p>Mecanismo y brazo, fotocélulas y parada ante obstáculos, mandos y lectores.</p></div>
+      <div class="mt-item"><span class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="5" height="15.5" rx=".9"/><rect x="16" y="5" width="5" height="15.5" rx=".9"/><path d="M8 11.5h3.2M12.8 11.5H16"/><path d="M9.6 9.2v4.6M14.4 9.2v4.6"/><path d="M2 20.5h20"/></svg></span><h3>Tornos y pasillos de acceso</h3><p>Mecanismo, sensores de paso, lectores de tarjeta, huella o cara, y altas y bajas de usuarios.</p></div>
+    </div>
+    <div class="mt-plans">
+      <div class="mt-plan">
+        <h3>Plan básico</h3>
+        <p class="freq">2 revisiones al año</p>
+        <ul><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Revisión completa y prueba de las seguridades</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Limpieza, engrase y ajuste del mecanismo</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Parte firmado y libro de mantenimiento al día</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Te digo qué hay que cambiar antes de que falle</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Precio cerrado al año, sin sorpresas</span></li></ul>
+      </div>
+      <div class="mt-plan pro">
+        <span class="mt-tag">Para equipos con mucho uso</span>
+        <h3>Plan completo</h3>
+        <p class="freq">4 revisiones al año</p>
+        <ul><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Todo lo del plan básico</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Prioridad en averías: voy en 24 a 48 horas laborables</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Revisión de lectores y puesta al día de usuarios en cada visita</span></li><li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Precio cerrado al año, sin sorpresas</span></li></ul>
+      </div>
+    </div>
+    <p class="mt-note">El precio depende de cuántas barreras y tornos tengas, y te lo doy por escrito después de verlos. También instalo barreras y tornos nuevos.</p>
+    <div class="mt-cta"><a class="btn btn-wa" href="https://wa.me/34639559683?text=Hola%2C%20te%20escribo%20desde%20la%20web.%20Quiero%20informaci%C3%B3n%20sobre%20el%20mantenimiento%20de%20barreras%20y%20tornos." target="_blank" rel="noopener"><svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>Pedir presupuesto de mantenimiento</a><a class="btn btn-ghost" href="#simulador" data-sim="mant:barreras:contrato">Calcular el precio</a><a class="btn btn-ghost" href="#contacto" data-svc="Barreras y tornos">Prefiero el formulario</a></div>
+  </div>
+</section>
+
 <section class="band light">
   <div class="wrap">
     <h2 class="h2">Te atiende el mismo técnico de principio a fin</h2>
@@ -820,6 +876,7 @@ section[id]{scroll-margin-top:84px}
           <option>Videovigilancia</option>
           <option>Videoportero</option>
           <option>Redes y cableado</option>
+          <option>Barreras y tornos</option>
           <option>Otro</option>
         </select></div>
       <div class="field"><label for="f-msg">Qué necesitas<span class="req" aria-hidden="true">*</span></label><textarea id="f-msg" name="mensaje" placeholder="Qué trabajo necesitas y dónde" maxlength="3000" required aria-describedby="e-msg"></textarea><p class="field-err" id="e-msg" hidden></p></div>
@@ -884,7 +941,7 @@ section[id]{scroll-margin-top:84px}
   function actualizarOrigen(){ origenEl.value='Llegó desde: '+llegada+(ultimo?' · Último botón: '+ultimo:''); }
   document.addEventListener('click',function(e){
     var el=e.target.closest && e.target.closest('a,button'); if(!el || el.closest('#presupuesto')) return;
-    var zona=el.closest('#simulador')?'Simulador':el.closest('header')?'Cabecera':el.closest('.pick')?'Portada, ¿Qué necesitas?':el.closest('#servicios')?'Servicios':el.closest('#preguntas')?'Preguntas frecuentes':el.closest('.steps-cta')?'Pasos':el.closest('.hero')?'Portada':el.closest('.floats')?'Botón flotante':el.closest('footer')?'Pie':'Página';
+    var zona=el.closest('#simulador')?'Simulador':el.closest('header')?'Cabecera':el.closest('.pick')?'Portada, ¿Qué necesitas?':el.closest('#servicios')?'Servicios':el.closest('#preguntas')?'Preguntas frecuentes':el.closest('#mantenimiento')?'Mantenimiento':el.closest('.steps-cta')?'Pasos':el.closest('.hero')?'Portada':el.closest('.floats')?'Botón flotante':el.closest('footer')?'Pie':'Página';
     var txt=(el.getAttribute('aria-label')||(el.querySelector('h3,b')||el).textContent||'').replace(/\s+/g,' ').trim().slice(0,50);
     ultimo=zona+': '+txt; actualizarOrigen();
   },true);
@@ -986,15 +1043,28 @@ section[id]{scroll-margin-top:84px}
   var root=document.getElementById('simulador'); if(!root) return;
 
   /* Precios con IVA incluido: [mínimo, máximo] */
-  var P={"ajuste":[41.74,41.74],"boletin":{"vivienda":{"alta":[108.26,177.26],"potencia":[108.26,177.26],"titular":[88.26,157.26],"reforma":[158.26,257.26]},"local":[250,450],"nose":[0,180],"antigua":[150,380],"urgente":[40,70]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[351.99,437.07],"cuadro_ampliado":[521.99,637.07],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[545.06,666.06],"casa_m":15,"comunidad":[687.91,881.51],"comunidad_m":20,"metro":[15.5,20.34],"metro_tri":[20.65,25.49],"largo_m":40,"seccion10":[1,1],"trifasica":[100,200],"cargador_mono":[887.61,1036.95],"cargador_tri":[947.31,1173.25],"potencia":[100,180]},"camaras":{"grabador":[557.88,599.98],"grabador16":[748.6,790.71],"interior":[103.78,124.83],"exterior":[183.95,205]},"videoportero":{"sustituir":[308.26,377.26],"nuevo":[428.26,527.26],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]}};
+  var P={"ajuste":[41.74,41.74],"boletin":{"vivienda":{"alta":[108.26,177.26],"potencia":[108.26,177.26],"titular":[88.26,157.26],"reforma":[158.26,257.26]},"local":[250,450],"nose":[0,180],"antigua":[150,380],"urgente":[40,70]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[351.99,437.07],"cuadro_ampliado":[521.99,637.07],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[545.06,666.06],"casa_m":15,"comunidad":[687.91,881.51],"comunidad_m":20,"metro":[15.5,20.34],"metro_tri":[20.65,25.49],"largo_m":40,"seccion10":[1,1],"trifasica":[100,200],"cargador_mono":[887.61,1036.95],"cargador_tri":[947.31,1173.25],"potencia":[100,180]},"camaras":{"grabador":[557.88,599.98],"grabador16":[748.6,790.71],"interior":[103.78,124.83],"exterior":[183.95,205]},"videoportero":{"sustituir":[308.26,377.26],"nuevo":[428.26,527.26],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]},"barreras":{"barrera4":[1928.62,2860.92],"barrera6":[2643.85,3951.86],"lazo":[311.7,467.54],"mandos10":[278.3,473.11],"tripode":[1641.97,3089.13],"pasillo":[4619.78,8182.02],"visita_barrera":[111.32,111.32],"visita_torno":[97.41,97.41],"visita_extra":[55.66,55.66],"averia":[97.41,97.41],"hora":[55.66,55.66],"km":[2.07,2.07]}};
 
   /* ---------- utilidades ---------- */
   function eur(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
-  function rd(p){var s=p[1]>=1000?50:(p[1]>=100?10:5); return [Math.round(p[0]/s)*s, Math.ceil(p[1]/s)*s];}
+  function rd(p){if(Math.abs(p[1]-p[0])<0.5){var u=Math.round(p[0]/5)*5; return [u,u];} var s=p[1]>=1000?50:(p[1]>=100?10:5); return [Math.round(p[0]/s)*s, Math.ceil(p[1]/s)*s];}
   function rng(p){var r=rd(p); if(r[1]<=0) return 'Incluido'; if(r[0]<=0) return 'hasta '+eur(r[1])+' €'; if(r[0]===r[1]) return eur(r[0])+' €'; return eur(r[0])+' – '+eur(r[1])+' €';}
   function mul(p,n){return [p[0]*n,p[1]*n];}
   function add(a,b){return [a[0]+b[0],a[1]+b[1]];}
   function plus(p){return '+'+rng(p);}
+  var KM_INC=40;   // km desde Madrid con el desplazamiento incluido
+  var HR={barrera:1.25, torno:1, camara:0.25, grabador:0.5, puerta:0.5, terminal:0.5, recarga:0.5, recarga_base:0.5};   // horas de cada revisión por equipo
+  function KMQ(show){ return {id:'km',t:'Distancia desde Madrid',type:'range',d:0,min:0,max:300,step:5,u:'km',show:show,hint:function(a){
+    return a.km<=KM_INC ? 'Hasta '+KM_INC+' km de Madrid el desplazamiento está incluido. Si estás más lejos, mueve la barra.'
+      : 'Se suma el desplazamiento de ida y vuelta'+(a.tipo==='contrato'?' de cada revisión':'')+'. Los peajes van aparte.';}}; }
+  function conKm(a,r,viajes,txt){
+    if(!(a.km>KM_INC) || !r.L.length) return r;
+    var v=viajes||r.dias||[1,1], k=[P.barreras.km[0]*a.km, P.barreras.km[1]*(a.km+30)];
+    r.dias=null;
+    r.L.push(['Desplazamiento a '+a.km+' km de Madrid'+(txt||(v[1]>1?' (por día de trabajo)':'')),[k[0]*v[0],k[1]*v[1]]]);
+    r.n.push('Los peajes van aparte.');
+    return r;
+  }
   function pl(n,uno,varios){return n+' '+(n===1?uno:varios);}
 
   /* ---------- preguntas y cálculo de cada servicio ---------- */
@@ -1113,6 +1183,69 @@ section[id]{scroll-margin-top:84px}
         return {L:L,inc:inc,n:['Te informo de las ayudas que haya disponibles.'],form:'Punto de recarga',dias:casa?[1,1]:[1,2]};
       }
     },
+    mant:{
+      nombre:'Mantenimiento',
+      q:[
+        {id:'grupo',t:'¿Qué equipo es?',type:'opt',d:'barreras',o:[
+          ['barreras','Barreras y tornos','Entrada de vehículos y personas'],
+          ['camaras','Cámaras','Videovigilancia y grabador'],
+          ['recarga','Puntos de recarga','Cargadores de coche eléctrico'],
+          ['accesos','Seguridad y accesos','Control de acceso y de presencia']]},
+        {id:'tipo',t:'¿Qué necesitas?',type:'opt',d:'contrato',o:[
+          ['contrato','Contrato de mantenimiento','Revisiones periódicas'],
+          ['averia','Avería o reparación','Algo no funciona']]},
+        {id:'mb',t:'Barreras',type:'num',d:1,min:0,max:20,show:function(a){return a.tipo==='contrato' && a.grupo==='barreras';}},
+        {id:'mt',t:'Tornos o pasillos',type:'num',d:0,min:0,max:20,show:function(a){return a.tipo==='contrato' && a.grupo==='barreras';}},
+        {id:'mc',t:'Cámaras',type:'num',d:4,min:0,max:64,show:function(a){return a.tipo==='contrato' && a.grupo==='camaras';}},
+        {id:'mr',t:'Puntos de recarga',type:'num',d:1,min:0,max:40,show:function(a){return a.tipo==='contrato' && a.grupo==='recarga';}},
+        {id:'ma',t:'Puertas con control de acceso',type:'num',d:1,min:0,max:20,show:function(a){return a.tipo==='contrato' && a.grupo==='accesos';}},
+        {id:'mp',t:'Terminales de control de presencia',type:'num',d:0,min:0,max:10,show:function(a){return a.tipo==='contrato' && a.grupo==='accesos';}},
+        {id:'plan',t:'Plan',type:'opt',d:'basico',show:function(a){return a.tipo==='contrato' && a.grupo==='barreras';},o:[['basico','Plan básico','2 revisiones al año'],['completo','Plan completo','4 revisiones al año y prioridad en averías']]},
+        {id:'plan2',t:'Plan',type:'opt',d:'basico',show:function(a){return a.tipo==='contrato' && a.grupo!=='barreras';},o:[['basico','Plan básico','1 revisión al año'],['completo','Plan completo','2 revisiones al año y prioridad en averías']]},
+        {id:'eqb',t:'¿Qué equipo falla?',type:'opt',d:'barrera',show:function(a){return a.tipo==='averia' && a.grupo==='barreras';},o:[['barrera','Barrera'],['torno','Torno o pasillo']]},
+        {id:'eqa',t:'¿Qué equipo falla?',type:'opt',d:'acceso',show:function(a){return a.tipo==='averia' && a.grupo==='accesos';},o:[['acceso','Control de acceso'],['presencia','Control de presencia']]},
+        KMQ()
+      ],
+      calc:function(a){
+        var B=P.barreras, L=[], inc=[], n=[], g=a.grupo, nombre={barreras:'Mantenimiento de barreras y tornos',camaras:'Mantenimiento de cámaras',recarga:'Mantenimiento de puntos de recarga',accesos:'Mantenimiento de seguridad y accesos'}[g];
+        var form={barreras:'Barreras y tornos',camaras:'Videovigilancia',recarga:'Punto de recarga',accesos:'Control de acceso'}[g];
+        if(a.tipo==='contrato'){
+          var completo=(g==='barreras'?a.plan:a.plan2)==='completo', v=g==='barreras'?(completo?4:2):(completo?2:1), it=[];
+          if(g==='barreras'){
+            if(a.mb) it.push([pl(a.mb,'barrera','barreras'),a.mb*HR.barrera]);
+            if(a.mt) it.push([pl(a.mt,'torno o pasillo','tornos o pasillos'),a.mt*HR.torno]);
+            inc=['Revisión completa y prueba de las seguridades','Limpieza, engrase y ajuste del mecanismo','Revisión de fotocélulas, mandos y lectores'];
+          } else if(g==='camaras'){
+            if(a.mc) it.push([pl(a.mc,'cámara','cámaras')+' con su grabador',a.mc*HR.camara+Math.ceil(a.mc/8)*HR.grabador]);
+            inc=['Limpieza y ajuste de las cámaras','Comprobación de la grabación y del disco','Acceso desde el móvil y actualizaciones'];
+          } else if(g==='recarga'){
+            if(a.mr) it.push([pl(a.mr,'punto de recarga','puntos de recarga'),HR.recarga_base+a.mr*HR.recarga]);
+            inc=['Prueba del diferencial y medición de la toma de tierra','Apriete de conexiones y revisión de cable y conector','Prueba de carga y actualización del cargador'];
+          } else {
+            if(a.ma) it.push([pl(a.ma,'puerta con control de acceso','puertas con control de acceso'),a.ma*HR.puerta]);
+            if(a.mp) it.push([pl(a.mp,'terminal de presencia','terminales de presencia'),a.mp*HR.terminal]);
+            if(!a.ma && a.mp) form='Control de presencia';
+            inc=['Prueba de lectores, cerraduras y pulsadores','Altas y bajas de usuarios y copia de seguridad','Revisión de fuentes de alimentación'];
+          }
+          // cada revisión es de 1 hora como mínimo
+          var h=it.reduce(function(s,x){return s+x[1];},0);
+          if(it.length && h<1) it[0][1]+=1-h;
+          var vt=v===1?' (1 revisión al año)':' ('+v+' revisiones al año)';
+          it.forEach(function(x){ L.push([x[0]+vt,mul(B.hora,x[1]*v)]); });
+          if(!it.length) n.push('Añade al menos un equipo.');
+          inc.push('Parte firmado en cada revisión');
+          if(completo) inc.push('Prioridad en averías: 24 a 48 horas laborables');
+          n.push('Precio al año. Las piezas que haya que cambiar te las digo antes.');
+          return conKm(a,{L:L,inc:inc,n:n,form:form,nombre:nombre,dias:it.length?[v,v]:null},[v,v],vt);
+        }
+        var nom={barreras:{barrera:'barrera',torno:'torno o pasillo'}[a.eqb],camaras:'cámaras',recarga:'punto de recarga',accesos:{acceso:'control de acceso',presencia:'control de presencia'}[a.eqa]}[g];
+        if(g==='accesos' && a.eqa==='presencia') form='Control de presencia';
+        L.push(['Avería de '+nom+': salida y primera hora',B.averia]);
+        inc=['Visita y diagnóstico','Primera hora de trabajo'];
+        n.push('Cada hora más: '+eur(B.hora[0])+' €. Las piezas te las digo antes de cambiarlas.');
+        return conKm(a,{L:L,inc:inc,n:n,form:form,nombre:nombre,dias:null});
+      }
+    },
     seguridad:{
       nombre:'Seguridad y accesos',
       q:[
@@ -1120,7 +1253,17 @@ section[id]{scroll-margin-top:84px}
           ['camaras','Cámaras','Videovigilancia'],
           ['videoportero','Videoportero','Casa o comunidad'],
           ['acceso','Control de acceso','Tarjeta, código, huella…'],
-          ['presencia','Control de presencia','Fichaje del personal']]},
+          ['presencia','Control de presencia','Fichaje del personal'],
+          ['barrera','Barrera vehicular','Entrada de vehículos'],
+          ['torno','Torno de acceso','Trípode o pasillo']]},
+        {id:'nb',t:'Número de barreras',type:'num',d:1,min:1,max:6,show:function(a){return a.sub==='barrera';}},
+        {id:'brazo',t:'Largo del brazo',type:'opt',d:'4',show:function(a){return a.sub==='barrera';},o:[['4','Hasta 4 m','La mayoría de entradas'],['6','De 4 a 6 m','Entradas anchas']]},
+        {id:'bext',t:'Extras',type:'chk',show:function(a){return a.sub==='barrera';},o:[
+          ['lazo','Detector de coche en el suelo (lazo)',plus(P.barreras.lazo)+' por barrera'],
+          ['mandos','10 mandos más',plus(P.barreras.mandos10)]]},
+        {id:'tt',t:'¿Qué tipo?',type:'opt',d:'tripode',show:function(a){return a.sub==='torno';},o:[['tripode','Torno trípode','El de tres brazos'],['pasillo','Pasillo de acceso','Puertas batientes']]},
+        {id:'nt',t:'Número de tornos o pasillos',type:'num',d:1,min:1,max:6,show:function(a){return a.sub==='torno';}},
+        {id:'lector',t:'¿Cómo se abrirá?',type:'opt',d:'tarjeta',show:function(a){return a.sub==='torno';},o:[['tarjeta','Tarjeta o llavero'],['huella','Huella'],['facial','Reconocimiento facial']]},
         {id:'cint',t:'Cámaras interiores',type:'num',d:2,min:0,max:16,show:function(a){return a.sub==='camaras';}},
         {id:'cext',t:'Cámaras exteriores',sub:'Antivandálicas, con visión nocturna',type:'num',d:2,min:0,max:16,show:function(a){return a.sub==='camaras';}},
         {id:'uso',t:'¿Dónde van?',type:'opt',d:'vivienda',show:function(a){return a.sub==='camaras';},o:[['vivienda','Vivienda'],['negocio','Negocio o comunidad']]},
@@ -1149,7 +1292,23 @@ section[id]{scroll-margin-top:84px}
       ],
       calc:function(a){
         var L=[], inc=[], n=[], form='Videovigilancia', dias=[1,1];
-        if(a.sub==='camaras'){
+        if(a.sub==='barrera'){
+          var B=P.barreras; form='Barreras y tornos';
+          L.push([pl(a.nb,'barrera','barreras')+(a.brazo==='4'?' con brazo de hasta 4 m':' con brazo de 4 a 6 m'),mul(a.brazo==='4'?B.barrera4:B.barrera6,a.nb)]);
+          if(a.bext.lazo) L.push([pl(a.nb,'detector de coche','detectores de coche'),mul(B.lazo,a.nb)]);
+          if(a.bext.mandos) L.push(['10 mandos más',B.mandos10]);
+          dias=[Math.ceil(a.nb/2),a.nb];
+          inc=['Barrera con fotocélulas, receptor y 2 mandos','Anclaje, cableado y puesta en marcha','Manual, declaración CE y libro de mantenimiento'];
+          n.push('Si hace falta obra (base de hormigón o zanja), te la presupuesto aparte.');
+        } else if(a.sub==='torno'){
+          var B2=P.barreras; form='Barreras y tornos';
+          L.push([pl(a.nt,a.tt==='tripode'?'torno trípode':'pasillo de acceso',a.tt==='tripode'?'tornos trípode':'pasillos de acceso')+' con lector',mul(a.tt==='tripode'?B2.tripode:B2.pasillo,a.nt)]);
+          if(a.lector==='huella') L.push(['Lector de huella',mul(P.acceso.huella,a.nt)]);
+          if(a.lector==='facial') L.push(['Reconocimiento facial',mul(P.acceso.facial,a.nt)]);
+          dias=a.tt==='tripode'?[Math.ceil(a.nt/3),Math.ceil(a.nt/2)]:[Math.ceil(a.nt/2),a.nt];
+          inc=['Equipo con su lector y fuente de alimentación','Anclaje al suelo, cableado y configuración','Alta de los primeros usuarios'];
+          if(a.tt==='pasillo') n.push('El precio de un pasillo depende mucho del modelo: te lo confirmo después de ver la entrada.');
+        } else if(a.sub==='camaras'){
           var C=P.camaras, tot=a.cint+a.cext;
           L.push(['Grabador con disco duro y configuración',tot>8?C.grabador16:C.grabador]);
           if(a.cint) L.push([pl(a.cint,'cámara interior','cámaras interiores'),mul(C.interior,a.cint)]);
@@ -1260,9 +1419,11 @@ section[id]{scroll-margin-top:84px}
 
     var r=s.calc(a), tot=[0,0];
     if(r.dias && r.L.length) r.L[0]=[r.L[0][0], add(r.L[0][1], [P.ajuste[0]*r.dias[0], P.ajuste[1]*r.dias[1]])];
-    r.L.forEach(function(l){ tot=add(tot,l[1]); });
-    var T=rng(tot);
-    document.getElementById('sim-svc').textContent=s.nombre;
+    // si todas las líneas son precios cerrados, el total es la suma de lo que se ve (sin descuadres de redondeo)
+    var cerr=r.L.every(function(l){ return Math.abs(l[1][1]-l[1][0])<0.5; });
+    r.L.forEach(function(l){ tot=add(tot, cerr?rd(l[1]):l[1]); });
+    var T=rng(tot), nombre=r.nombre||s.nombre;
+    document.getElementById('sim-svc').textContent=nombre;
     document.getElementById('sim-total').textContent=T;
     document.getElementById('sim-peek-total').textContent=T;
     document.getElementById('sim-lines').innerHTML=r.L.map(function(l){return '<li><span>'+l[0]+'</span><b>'+rng(l[1])+'</b></li>';}).join('');
@@ -1270,7 +1431,7 @@ section[id]{scroll-margin-top:84px}
     document.getElementById('sim-notes').textContent=r.n.join(' ');
 
     // resumen para WhatsApp, email y formulario
-    var res=['Servicio: '+s.nombre];
+    var res=['Servicio: '+nombre];
     s.q.forEach(function(q){
       if(q.show && !q.show(a)) return;
       var v=a[q.id], txt='';
@@ -1281,9 +1442,9 @@ section[id]{scroll-margin-top:84px}
       if(txt) res.push('- '+(q.t==='Extras'?'Extras':q.t.replace(/^¿|\?$/g,''))+': '+txt);
     });
     res.push('Precio orientativo del simulador: '+T+' (IVA incluido)');
-    last={form:r.form, texto:res.join('\n'), det:res.slice(1).join('\n'), nombre:s.nombre};
+    last={form:r.form, texto:res.join('\n'), det:res.slice(1).join('\n'), nombre:nombre};
     document.getElementById('sim-wa').href='https://wa.me/34639559683?text='+encodeURIComponent('Hola, he usado el simulador de la web y quiero el presupuesto exacto.\n'+last.texto);
-    document.getElementById('sim-mail').href='mailto:info@bytechservicios.es?subject='+encodeURIComponent('Presupuesto: '+s.nombre)+'&body='+encodeURIComponent('Hola, he usado el simulador de la web y quiero el presupuesto exacto.\n\n'+last.texto+'\n\nMi nombre:\nMi teléfono:\nLocalidad:\n');
+    document.getElementById('sim-mail').href='mailto:info@bytechservicios.es?subject='+encodeURIComponent('Presupuesto: '+nombre)+'&body='+encodeURIComponent('Hola, he usado el simulador de la web y quiero el presupuesto exacto.\n\n'+last.texto+'\n\nMi nombre:\nMi teléfono:\nLocalidad:\n');
   }
 
   /* ---------- eventos ---------- */
@@ -1304,7 +1465,7 @@ section[id]{scroll-margin-top:84px}
     if(t.type==='number'){ var q=null, id=t.closest('.sq').getAttribute('data-q'); SERV[cur].q.forEach(function(x){if(x.id===id) q=x;}); if(q){ t.value=clamp(q,t.value); var rg=t.closest('.sq').querySelector('input[type=range]'); if(rg) rg.value=t.value; } }
     update();
   });
-  function pick(k,sub){ if(!SERV[k]) return; cur=k; if(sub) A[k][SERV[k].q[0].id]=sub; render(); }
+  function pick(k,sub,sub2){ if(!SERV[k]) return; cur=k; if(sub) A[k][SERV[k].q[0].id]=sub; if(sub2) A[k][SERV[k].q[1].id]=sub2; render(); }
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){ pick(t.getAttribute('data-s')); });
     t.addEventListener('keydown',function(e){
@@ -1314,7 +1475,7 @@ section[id]{scroll-margin-top:84px}
   });
   // Enlaces de otras partes de la web que abren el simulador con un servicio elegido (data-sim="seguridad:acceso")
   document.querySelectorAll('[data-sim]').forEach(function(l){
-    l.addEventListener('click',function(){ var p=l.getAttribute('data-sim').split(':'); pick(p[0],p[1]); });
+    l.addEventListener('click',function(){ var p=l.getAttribute('data-sim').split(':'); pick(p[0],p[1],p[2]); });
   });
   // En móvil: resumen flotante mientras se ven las preguntas y no el resultado
   if('IntersectionObserver' in window){
