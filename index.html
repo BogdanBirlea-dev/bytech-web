@@ -1006,7 +1006,7 @@ section[id]{scroll-margin-top:84px}
   var root=document.getElementById('simulador'); if(!root) return;
 
   /* Precios con IVA incluido: [mínimo, máximo] */
-  var P={"ajuste":[41.74,41.74],"boletin":{"vivienda":{"alta":[108.26,177.26],"potencia":[108.26,177.26],"titular":[88.26,157.26],"reforma":[158.26,257.26]},"local":[250,450],"nose":[0,180],"antigua":[150,380],"urgente":[40,70]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[351.99,437.07],"cuadro_ampliado":[521.99,637.07],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[545.06,666.06],"casa_m":15,"comunidad":[687.91,881.51],"comunidad_m":20,"metro":[15.5,20.34],"metro_tri":[20.65,25.49],"largo_m":40,"seccion10":[1,1],"trifasica":[100,200],"cargador_mono":[887.61,1036.95],"cargador_tri":[947.31,1173.25],"potencia":[100,180]},"camaras":{"grabador":[557.88,599.98],"grabador16":[748.6,790.71],"interior":[103.78,124.83],"exterior":[183.95,205]},"videoportero":{"sustituir":[308.26,377.26],"nuevo":[428.26,527.26],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]},"barreras":{"barrera4":[1928.62,2860.92],"barrera6":[2643.85,3951.86],"lazo":[311.7,467.54],"mandos10":[278.3,473.11],"tripode":[1641.97,3089.13],"pasillo":[4619.78,8182.02],"visita_barrera":[111.32,111.32],"visita_torno":[97.41,97.41],"visita_extra":[55.66,55.66],"averia":[120.66,120.66],"hora":[55.66,55.66],"km":[2.07,2.07],"salida":[65,65]}};
+  var P={"ajuste":[41.74,41.74],"boletin":{"vivienda":{"alta":[108.26,177.26],"potencia":[108.26,177.26],"titular":[88.26,157.26],"reforma":[158.26,257.26]},"local":[250,450],"nose":[0,180],"antigua":[150,380],"urgente":[40,70]},"instalacion":{"fijo":[460,690],"m2":[26.45,43.7],"elevada":[402.5,805],"rozas_m2":[9.2,16.1],"cuadro_basico":[351.99,437.07],"cuadro_ampliado":[521.99,637.07],"sobretensiones":[267.15,294.98],"proteccion_st":[156.27,170.18],"boletin_cuadro":[115,207],"minimo":[46,69],"enchufe":[64,91.83],"luz":[64,91.83],"circuito":[175.27,230.93],"averia":[69.57,97.41],"hora":[55.66,55.66],"urgente":[34.5,69]},"recarga":{"casa":[545.06,666.06],"casa_m":15,"comunidad":[687.91,881.51],"comunidad_m":20,"metro":[15.5,20.34],"metro_tri":[20.65,25.49],"largo_m":40,"seccion10":[1,1],"trifasica":[100,200],"cargador_mono":[887.61,1036.95],"cargador_tri":[947.31,1173.25],"potencia":[100,180]},"camaras":{"grabador":[557.88,599.98],"grabador16":[748.6,790.71],"interior":[103.78,124.83],"exterior":[183.95,205]},"videoportero":{"sustituir":[308.26,377.26],"nuevo":[428.26,527.26],"monitor":[103.5,184],"abrepuertas":[69,126.5],"comunidad":[690,1092.5],"vivienda":[86.25,138],"placa":[402.5,690]},"acceso":{"puerta":[464.45,520.11],"tarjeta":[23.38,37.29],"huella":[69,138],"facial":[207,368],"iman":[69,138],"movil":[69,138]},"presencia":{"terminal":[287.5,517.5],"software":[92,172.5]},"barreras":{"barrera4":[1928.62,2860.92],"barrera6":[2643.85,3951.86],"lazo":[311.7,467.54],"mandos10":[278.3,473.11],"tripode":[1641.97,3089.13],"pasillo":[4619.78,8182.02],"mont_barrera4":[400.75,690.18],"mont_barrera6":[456.41,745.84],"mont_tripode":[272.73,434.15],"mont_pasillo":[528.77,834.9],"visita_barrera":[111.32,111.32],"visita_torno":[97.41,97.41],"visita_extra":[55.66,55.66],"averia":[120.66,120.66],"hora":[55.66,55.66],"km":[2.07,2.07],"salida":[65,65],"hotel":[80,80],"dieta":[40,40]}};
 
   /* ---------- utilidades ---------- */
   function eur(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
@@ -1029,6 +1029,17 @@ section[id]{scroll-margin-top:84px}
     return r;
   }
   function pl(n,uno,varios){return n+' '+(n===1?uno:varios);}
+  var KM_HOTEL=100;   // a partir de aquí, en barreras y tornos: una ida y vuelta, hotel y dieta por día de montaje
+  function nd(d,uno,varios){return d[0]===d[1]?pl(d[0],uno,varios):d[0]+' a '+d[1]+' '+varios;}
+  function conViaje(a,r){
+    if(!(a.km>KM_INC) || !r.L.length) return r;
+    var d=r.dias||[1,1];
+    if(a.km<KM_HOTEL) return conKm(a,r);
+    r=conKm(a,r,[1,1],' (ida y vuelta)');
+    r.L.push(['Hotel ('+nd(d,'noche','noches')+')',[P.barreras.hotel[0]*d[0],P.barreras.hotel[1]*d[1]]]);
+    r.L.push(['Dietas ('+nd(d,'día','días')+')',[P.barreras.dieta[0]*d[0],P.barreras.dieta[1]*d[1]]]);
+    return r;
+  }
 
   /* ---------- preguntas y cálculo de cada servicio ---------- */
   var SERV={
@@ -1219,6 +1230,7 @@ section[id]{scroll-margin-top:84px}
           ['presencia','Control de presencia','Fichaje del personal'],
           ['barrera','Barrera vehicular','Entrada de vehículos'],
           ['torno','Torno de acceso','Trípode o pasillo']]},
+        {id:'equipo',t:'¿Incluimos el equipo?',type:'opt',d:'si',show:function(a){return a.sub==='barrera'||a.sub==='torno';},o:[['si','Sí, inclúyelo','Equipo y montaje'],['no','No, ya lo tengo','Solo el montaje']]},
         {id:'nb',t:'Número de barreras',type:'num',d:1,min:1,max:6,show:function(a){return a.sub==='barrera';}},
         {id:'brazo',t:'Largo del brazo',type:'opt',d:'4',show:function(a){return a.sub==='barrera';},o:[['4','Hasta 4 m','La mayoría de entradas'],['6','De 4 a 6 m','Entradas anchas']]},
         {id:'bext',t:'Extras',type:'chk',show:function(a){return a.sub==='barrera';},o:[
@@ -1226,7 +1238,11 @@ section[id]{scroll-margin-top:84px}
           ['mandos','10 mandos más',plus(P.barreras.mandos10)]]},
         {id:'tt',t:'¿Qué tipo?',type:'opt',d:'tripode',show:function(a){return a.sub==='torno';},o:[['tripode','Torno trípode','El de tres brazos'],['pasillo','Pasillo de acceso','Puertas batientes']]},
         {id:'nt',t:'Número de tornos o pasillos',type:'num',d:1,min:1,max:6,show:function(a){return a.sub==='torno';}},
-        {id:'lector',t:'¿Cómo se abrirá?',type:'opt',d:'tarjeta',show:function(a){return a.sub==='torno';},o:[['tarjeta','Tarjeta o llavero'],['huella','Huella'],['facial','Reconocimiento facial']]},
+        {id:'lector',t:'¿Cómo se abrirá?',type:'opt',d:'tarjeta',show:function(a){return a.sub==='torno'&&a.equipo!=='no';},o:[['tarjeta','Tarjeta o llavero'],['huella','Huella'],['facial','Reconocimiento facial']]},
+        {id:'km',t:'Distancia desde Madrid',type:'range',d:0,min:0,max:600,step:5,u:'km',show:function(a){return a.sub==='barrera'||a.sub==='torno';},hint:function(a){
+          return a.km<=KM_INC ? 'Hasta '+KM_INC+' km de Madrid el desplazamiento está incluido. Si la obra está más lejos, mueve la barra.'
+            : a.km<KM_HOTEL ? 'Se suma el desplazamiento de cada día de montaje. Los peajes van aparte.'
+            : 'Se suma el viaje de ida y vuelta, el hotel y las dietas de los días de montaje. Los peajes van aparte.';}},
         {id:'cint',t:'Cámaras interiores',type:'num',d:2,min:0,max:16,show:function(a){return a.sub==='camaras';}},
         {id:'cext',t:'Cámaras exteriores',sub:'Antivandálicas, con visión nocturna',type:'num',d:2,min:0,max:16,show:function(a){return a.sub==='camaras';}},
         {id:'uso',t:'¿Dónde van?',type:'opt',d:'vivienda',show:function(a){return a.sub==='camaras';},o:[['vivienda','Vivienda'],['negocio','Negocio o comunidad']]},
@@ -1257,20 +1273,28 @@ section[id]{scroll-margin-top:84px}
         var L=[], inc=[], n=[], form='Videovigilancia', dias=[1,1];
         if(a.sub==='barrera'){
           var B=P.barreras; form='Barreras y tornos';
-          L.push([pl(a.nb,'barrera','barreras')+(a.brazo==='4'?' con brazo de hasta 4 m':' con brazo de 4 a 6 m'),mul(a.brazo==='4'?B.barrera4:B.barrera6,a.nb)]);
+          var eqb=a.equipo!=='no', brz=(a.brazo==='4'?' con brazo de hasta 4 m':' con brazo de 4 a 6 m');
+          if(eqb) L.push([pl(a.nb,'barrera','barreras')+brz,mul(a.brazo==='4'?B.barrera4:B.barrera6,a.nb)]);
+          else L.push(['Montaje de '+pl(a.nb,'barrera','barreras')+brz+' (equipo tuyo)',mul(a.brazo==='4'?B.mont_barrera4:B.mont_barrera6,a.nb)]);
           if(a.bext.lazo) L.push([pl(a.nb,'detector de coche','detectores de coche'),mul(B.lazo,a.nb)]);
           if(a.bext.mandos) L.push(['10 mandos más',B.mandos10]);
           dias=[Math.ceil(a.nb/2),a.nb];
-          inc=['Barrera con fotocélulas, receptor y 2 mandos','Anclaje, cableado y puesta en marcha','Manual, declaración CE y libro de mantenimiento'];
+          inc=eqb?['Barrera con fotocélulas, receptor y 2 mandos','Anclaje, cableado y puesta en marcha','Manual, declaración CE y libro de mantenimiento']
+                 :['Anclaje, cableado y pequeño material','Puesta en marcha y prueba de las seguridades','Libro de mantenimiento'];
+          if(!eqb) n.push('Antes de montarla compruebo que el equipo tiene marcado CE y sus instrucciones.');
           n.push('Si hace falta obra (base de hormigón o zanja), te la presupuesto aparte.');
         } else if(a.sub==='torno'){
           var B2=P.barreras; form='Barreras y tornos';
-          L.push([pl(a.nt,a.tt==='tripode'?'torno trípode':'pasillo de acceso',a.tt==='tripode'?'tornos trípode':'pasillos de acceso')+' con lector',mul(a.tt==='tripode'?B2.tripode:B2.pasillo,a.nt)]);
-          if(a.lector==='huella') L.push(['Lector de huella',mul(P.acceso.huella,a.nt)]);
-          if(a.lector==='facial') L.push(['Reconocimiento facial',mul(P.acceso.facial,a.nt)]);
+          var eqt=a.equipo!=='no', nomt=pl(a.nt,a.tt==='tripode'?'torno trípode':'pasillo de acceso',a.tt==='tripode'?'tornos trípode':'pasillos de acceso');
+          if(eqt){
+            L.push([nomt+' con lector',mul(a.tt==='tripode'?B2.tripode:B2.pasillo,a.nt)]);
+            if(a.lector==='huella') L.push(['Lector de huella',mul(P.acceso.huella,a.nt)]);
+            if(a.lector==='facial') L.push(['Reconocimiento facial',mul(P.acceso.facial,a.nt)]);
+          } else L.push(['Montaje de '+nomt+' (equipo tuyo)',mul(a.tt==='tripode'?B2.mont_tripode:B2.mont_pasillo,a.nt)]);
           dias=a.tt==='tripode'?[Math.ceil(a.nt/3),Math.ceil(a.nt/2)]:[Math.ceil(a.nt/2),a.nt];
-          inc=['Equipo con su lector y fuente de alimentación','Anclaje al suelo, cableado y configuración','Alta de los primeros usuarios'];
-          if(a.tt==='pasillo') n.push('El precio de un pasillo depende mucho del modelo: te lo confirmo después de ver la entrada.');
+          inc=eqt?['Equipo con su lector y fuente de alimentación','Anclaje al suelo, cableado y configuración','Alta de los primeros usuarios']
+                 :['Anclaje al suelo, cableado y pequeño material','Conexión del lector y configuración','Alta de los primeros usuarios'];
+          if(eqt&&a.tt==='pasillo') n.push('El precio de un pasillo depende mucho del modelo: te lo confirmo después de ver la entrada.');
         } else if(a.sub==='camaras'){
           var C=P.camaras, tot=a.cint+a.cext;
           L.push(['Grabador con disco duro y configuración',tot>8?C.grabador16:C.grabador]);
@@ -1312,7 +1336,8 @@ section[id]{scroll-margin-top:84px}
           inc=['Terminal de huella, tarjeta o facial','Montaje y conexión','Formación para usarlo'];
           n.push('Si el programa de fichaje tiene cuota mensual, no está incluida.');
         }
-        return {L:L,inc:inc,n:n,form:form,dias:dias};
+        var res={L:L,inc:inc,n:n,form:form,dias:dias};
+        return (a.sub==='barrera'||a.sub==='torno') ? conViaje(a,res) : res;
       }
     }
   };
